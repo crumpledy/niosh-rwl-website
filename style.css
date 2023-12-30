@@ -1,0 +1,22 @@
+body {
+    background-color: #1675b5;
+    margin: 1;
+
+    overflow: scroll;
+}
+
+.container {
+    background-color: #1675b5; /* Mavi renk */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+}
+
+.button {
+    width: 60px;
+    height: 30px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
