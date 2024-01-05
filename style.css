@@ -2,7 +2,7 @@ body {
     background-color: #1675b5;
     margin: 1;
 
-    overflow: scroll;
+    overflow: auto;
 }
 
 .container {
@@ -10,13 +10,104 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 10vh;
+    height: 1vh;
+    margin: auto;
 }
 
 .button {
-    width: 60px;
-    height: 30px;
-    background-color: white;
+    background-color: #007bff;
     border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 3px;
     cursor: pointer;
+    padding: 10px 5px; 
+    border-radius: 40px;
+    transition: all 0.1s ease;
 }
+
+.button:hover {
+    background-color: #405f80;
+    transform: scale(1.2);
+}
+.navigation {
+    width: auto;
+    height: 80px;
+    background: #209cff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    border-radius: 10px;
+
+}
+.navigation ul {
+    display: flex;
+    width: 350px;
+
+}
+.navigation ul li {
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+}
+.navigation ul li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+
+}
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    line-height: 70px;
+    font-size: 1.5rem;
+    text-align: center;
+    transition: 0.5s;
+    color: var(--clr);
+}
+.language-button {
+    position: relative;
+    background-color: #2a1b9a;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flexbox;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 100%;
+   }
+   
+   .language-button img {
+    width: 26px;
+    height: 26px;
+    vertical-align: middle;
+   }
+   
+   .language-button:hover {
+    background-color: #45a049;
+   }
+   .homepage-png{
+    height: 474px;
+    width: 1028px;
+   
+
+   }
+   .container{
+    display: flex;
+    flex-direction: column;
+   }
