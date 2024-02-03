@@ -17,22 +17,54 @@
                 <label for="unitOfMeasurement">Unit of Measurement</label>
                 <select id="unitOfMeasurement">
                     <option value="metric">Metric</option>
-                    <option value="imperial">Imperial</option>
+                    <option value="imperial">U.S. Customary</option>
                 </select>
             </div>
 
             <div class="input-table">
                 <div class="input-row">
-                  <div class="input-cell label">Horizontal Location</div>
-                  <div class="input-cell description">distance from hands to mid-point between medial malleoli measured at origin and destination</div>
-                  <div class="input-cell input"><input type="text"></div>
+                    <div class="input-cell label">Horizontal Location</div>
+                    <div class="input-cell description">distance from hands to mid-point between medial malleoli
+                        measured at origin and destination</div>
+                    <div class="input-cell input"><input type="text"></div>
                 </div>
                 <div class="input-row">
-                  <div class="input-cell label">Vertical Location</div>
-                  <div class="input-cell description">distance from hands above floor measured at origin and destination</div>
-                  <div class="input-cell input"><input type="text"></div>
+                    <div class="input-cell label">Vertical Location</div>
+                    <div class="input-cell description">distance from hands above floor measured at origin and
+                        destination</div>
+                    <div class="input-cell input"><input type="text"></div>
                 </div>
-              </div>
+                <div class="input-row">
+                    <div class="input-cell label">Distance</div>
+                    <div class="input-cell description">vertical travel = high - low</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Angle of Asymmetry</div>
+                    <div class="input-cell description">the angle between asymmetry line and sagittal line</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Coupling</div>
+                    <div class="input-cell description">How well the worker can grasp the object</div>
+                    <select id="coupling-select"></select>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Frequency</div>
+                    <div class="input-cell description">the number of lifts per minute</div>
+                    <select id="frequency-select"></select>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Duration</div>
+                    <div class="input-cell description">the total time spent lifting over a work shift</div>
+                    <select id="duration-select"></select>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Load Weight</div>
+                    <div class="input-cell description">weight of the object lifted</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+            </div>
 
         </div>
         <div class="button-container">
@@ -47,5 +79,5 @@
         </div>
     </div>
 </body>
-
+<script src="../js/calculator.js"></script>
 </html>
