@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIOSH Lifting Calculator</title>
+    <link rel="stylesheet" href="../css/calculatorStyles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>NIOSH Lifting Calculator</h1>
+        <div id="inputs">
+            <h2>INPUTS</h2>
+            <div class="input-group">
+                <label for="unitOfMeasurement">Unit of Measurement</label>
+                <select id="unitOfMeasurement">
+                    <option value="metric">Metric</option>
+                    <option value="imperial">U.S. Customary</option>
+                </select>
+            </div>
+
+            <div class="input-table">
+                <div class="input-row">
+                    <div class="input-cell label">Horizontal Location</div>
+                    <div class="input-cell description">distance from hands to mid-point between medial malleoli
+                        measured at origin and destination</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Vertical Location</div>
+                    <div class="input-cell description">distance from hands above floor measured at origin and
+                        destination</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Distance</div>
+                    <div class="input-cell description">vertical travel = high - low</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Angle of Asymmetry</div>
+                    <div class="input-cell description">the angle between asymmetry line and sagittal line</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Coupling</div>
+                    <div class="input-cell description">How well the worker can grasp the object</div>
+                    <select id="coupling-select"></select>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Frequency</div>
+                    <div class="input-cell description">the number of lifts per minute</div>
+                    <select id="frequency-select"></select>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Duration</div>
+                    <div class="input-cell description">the total time spent lifting over a work shift</div>
+                    <select id="duration-select"></select>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Load Weight</div>
+                    <div class="input-cell description">weight of the object lifted</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="button-container">
+            <div class="first-button-container">
+                <button id="calculate">Calculate</button>
+            </div>
+            <div class="second-button-container">
+                <button id="clear">Clear</button>
+                <button id="print">Print</button>
+                <button id="save">Save</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/calculator.js"></script>
+</html>

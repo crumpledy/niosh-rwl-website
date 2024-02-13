@@ -1,0 +1,84 @@
+body {
+     font-family: Arial, sans-serif;
+}
+
+.container {
+     width: 80%;
+     margin: auto;
+}
+
+.input-group {
+     margin-bottom: 10px;
+}
+
+label {
+     display: block;
+}
+
+select,
+input {
+     width: 100%;
+     padding: 5px;
+}
+
+.button-container {
+     align-items: flex-start;
+}
+
+.first-button-container {
+     justify-content: space-around;
+}
+
+.second-button-container {
+     justify-content: space-around;
+}
+
+button {
+     padding: 10px;
+     margin-top: 10px;
+}
+
+#calculate {
+     background-color: blue;
+     color: white;
+}
+
+#clear {
+     background-color: red;
+}
+
+#print,
+#save {
+     background-color: green;
+}
+
+.input-table {
+     display: table;
+     width: 100%;
+}
+
+.input-row {
+     display: table-row;
+}
+
+.input-cell {
+     display: table-cell;
+     padding: 8px;
+     vertical-align: middle;
+}
+
+.label {
+     font-weight: bold;
+}
+
+.input-cell.input {
+     width: 200px;
+     /* or whatever width you prefer */
+}
+
+.input-cell.input input {
+     width: 100%;
+     padding: 5px;
+}
+
+/* Add any additional styling you need */
