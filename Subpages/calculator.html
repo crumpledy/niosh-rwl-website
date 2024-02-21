@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIOSH Lifting Calculator</title>
+    <link rel="stylesheet" href="../css/calculatorStyles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>NIOSH Lifting Calculator</h1>
+        <div id="inputs">
+            <h2><u>INPUTS</u></h2>
+            <div class="input-group">
+                <label for="unitOfMeasurement">Unit of Measurement</label>
+                <select id="unitOfMeasurement">
+                    <option value="metric">Metric</option>
+                    <option value="imperial">U.S. Customary</option>
+                </select>
+            </div>
+
+            <div class="input-table">
+                <div class="input-row">
+                    <div class="input-cell label">Horizontal Location</div>
+                    <div class="input-cell description">distance from hands to mid-point between medial malleoli
+                        measured at origin and destination</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Vertical Location</div>
+                    <div class="input-cell description">distance from hands above floor measured at origin and
+                        destination</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Distance</div>
+                    <div class="input-cell description">vertical travel = high - low</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Angle of Asymmetry</div>
+                    <div class="input-cell description">the angle between asymmetry line and sagittal line</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Coupling</div>
+                    <div class="input-cell description">How well the worker can grasp the object</div>
+                    <select id="coupling-select"></select>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Frequency</div>
+                    <div class="input-cell description">the number of lifts per minute</div>
+                    <select id="frequency-select"></select>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Duration</div>
+                    <div class="input-cell description">the total time spent lifting over a work shift</div>
+                    <select id="duration-select"></select>
+                </div>
+                <div class="input-row">
+                    <div class="input-cell label">Load Weight</div>
+                    <div class="input-cell description">weight of the object lifted</div>
+                    <div class="input-cell input"><input type="text"></div>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <div class="first-button-container">
+                <button id="calculate">Calculate</button>
+            </div>
+            <div class="second-button-container">
+                <button id="clear">Clear</button>
+                <button id="print">Print</button>
+                <button id="save">Save</button>
+            </div>
+        </div>
+    </div>
+    <!-- Footer start -->
+    <div class="footer-container">
+        <div class="footer-section">
+          <h3>ERGO</h3>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Give Feedback</a></li>
+          </ul>
+        </div>
+      
+        <div class="footer-section">
+          <h3>ABOUT US</h3>
+          <ul>
+            <li><a href="#">Who are we</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+  
+       <div class="footer-section">
+          <p>Bahcesehir University Guney Campus<br>
+             Yildiz, Çırağan Cd., 34349 Beşiktaş/İstanbul<br>
+          </p>
+          
+          <div class="linker-links">
+            <a href="mailto:info@ergo.com">info@ergo.com</a>
+              <div class="social-icons">
+                <a href="#"><img src="../images/facebook-circle.svg" alt="Facebook linker" id="svgImageFacebook"></a>
+                <a href="#"><img src="../images/youtube-circle.svg" alt="YouTube linker" id="svgImageYoutube"></a>
+                <a href="#"><img src="../images/twitter-circle.svg" alt="Twitter linker" id="svgImageTwitter"></a>
+              </div>
+          </div>
+        </div>
+      
+        <div class="footer-section">
+          <h3>HELP</h3>
+          <ul>
+            <li><a href="#">What is NIOSH</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <img src="./chair.png" alt="ERGO Logo">
+        <h2>ERGO</h2>
+        <h1>NIOSH LIFTING CALCULATOR</h1>
+      </div>
+  
+  <!-- Footer end -->
+</body>
+<script src="../js/calculator.js"></script>
+</html>
