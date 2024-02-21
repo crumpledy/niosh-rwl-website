@@ -1,6 +1,13 @@
+var unitOfMeasurement = document.getElementById("unit-of-measurement-select");
+
+var horizontalLocation = document.getElementById("horizontal-location-text");
+var verticalLocation = document.getElementById("vertical-location-text");
+var distance = document.getElementById("distance-text");
+var angleOfAsymmetry = document.getElementById("angle-of-asymmetry-text");
 var selectCoupling = document.getElementById("coupling-select");
 var selecFrequency = document.getElementById("frequency-select");
 var selectDuration = document.getElementById("duration-select");
+var loadWeight = document.getElementById("load-weight-text");
 
 var couplingOptions = ["Good", "Fair", "Poor"];
 var frequencyOptions = ["<=0.2", "0.5", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", ">15"];
