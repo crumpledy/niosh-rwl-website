@@ -15,7 +15,7 @@
             <h2><u>INPUTS</u></h2>
             <div class="input-group">
                 <label for="unitOfMeasurement">Unit of Measurement</label>
-                <select id="unitOfMeasurement">
+                <select class="unitOfMeasurement" id="unit-of-measurement-select">
                     <option value="metric">Metric</option>
                     <option value="imperial">U.S. Customary</option>
                 </select>
@@ -26,23 +26,23 @@
                     <div class="input-cell label">Horizontal Location</div>
                     <div class="input-cell description">distance from hands to mid-point between medial malleoli
                         measured at origin and destination</div>
-                    <div class="input-cell input"><input type="text"></div>
+                    <div class="input-cell input"><input id="horizontal-location-text" type="text"></div>
                 </div>
                 <div class="input-row">
                     <div class="input-cell label">Vertical Location</div>
                     <div class="input-cell description">distance from hands above floor measured at origin and
                         destination</div>
-                    <div class="input-cell input"><input type="text"></div>
+                    <div class="input-cell input"><input id="vertical-location-text" type="text"></div>
                 </div>
                 <div class="input-row">
                     <div class="input-cell label">Distance</div>
                     <div class="input-cell description">vertical travel = high - low</div>
-                    <div class="input-cell input"><input type="text"></div>
+                    <div class="input-cell input"><input id="distance-text" type="text"></div>
                 </div>
                 <div class="input-row">
                     <div class="input-cell label">Angle of Asymmetry</div>
                     <div class="input-cell description">the angle between asymmetry line and sagittal line</div>
-                    <div class="input-cell input"><input type="text"></div>
+                    <div class="input-cell input"><input id="angle-of-asymmetry-text" type="text"></div>
                 </div>
                 <div class="input-row">
                     <div class="input-cell label">Coupling</div>
@@ -62,7 +62,7 @@
                 <div class="input-row">
                     <div class="input-cell label">Load Weight</div>
                     <div class="input-cell description">weight of the object lifted</div>
-                    <div class="input-cell input"><input type="text"></div>
+                    <div class="input-cell input"><input id="load-weight-text" type="text"></div>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
                 <button id="calculate">Calculate</button>
             </div>
             <div class="second-button-container">
-                <button id="clear">Clear</button>
+                <button onclick="clearInputs()" id="clear">Clear</button>
                 <button id="print">Print</button>
                 <button id="save">Save</button>
             </div>
