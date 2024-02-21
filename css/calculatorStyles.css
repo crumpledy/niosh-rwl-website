@@ -7,6 +7,10 @@ body {
      margin: auto;
 }
 
+.unitOfMeasurement {
+     width: 12%;
+}
+
 .input-group {
      margin-bottom: 10px;
 }
@@ -22,7 +26,7 @@ input {
 }
 
 .button-container {
-     display: flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
