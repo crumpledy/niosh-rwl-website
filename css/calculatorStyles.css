@@ -133,7 +133,18 @@ button {
 
 }
 
-/* Add any additional styling you need */
+.results-first-column-row {
+     width: 20%;
+}
+
+.results-second-column-row {
+     width: 30%;
+}
+
+.results-third-column-row {
+     width: 50%;
+}
+
 .footer-container {
      display: flex;
      justify-content: space-around;
@@ -218,3 +229,32 @@ button {
      font-size: 18px;
      font-style: italic;
  }
+
+ .table-header {
+     background-color: #007bff;
+     text-align: center;
+     padding: 10px 0;
+   }
+   table {
+     width: 80%;
+     margin: auto;
+     border-collapse: collapse;
+     margin-bottom: 300px;
+   }
+   th, td {
+     border: 1px solid #dee2e6;
+   }
+   th {
+     height: 50px;
+     font-size: 20px;
+     text-decoration: underline;
+     color: #000000;
+   }
+   td {
+     height: 50px;
+     padding: 10px;
+     background-color: #f8f9fa;
+   }
+   .risk-level {
+     background-color: #e9ecef;
+   }

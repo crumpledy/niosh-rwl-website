@@ -69,7 +69,7 @@
         </div>
         <div class="button-container">
             <div class="first-button-container">
-                <button id="calculate">Calculate</button>
+                <button onclick="calculate()" id="calculate">Calculate</button>
             </div>
             <div class="second-button-container">
                 <button onclick="clearInputs()" id="clear">Clear</button>
@@ -78,6 +78,55 @@
             </div>
         </div>
     </div>
+    <!--- Results Start -->
+    <table>
+      <!-- Table Headers -->
+      <tr>
+        <th colspan="2" class="table-header">RESULTS</th>
+        <th class="table-header">RISK LEVEL AND SUGGESTIONS</th>
+      </tr>
+      <!-- Table Rows -->
+      <tr>
+        <td class="results-first-column-row">Recommended Weight Limit (RWL)</td>
+        <td class="results-second-column-row" id="rwl-output"></td>
+        <td class="results-third-column-row" id="rwl-suggestion"></td>
+      </tr>
+      <tr>
+        <td class="results-first-column-row">Lifting Index (LI)</td>
+        <td class="results-second-column-row" id="li-output"></td>
+        <td class="results-third-column-row" id="li-suggestion"></td>
+      </tr>
+      <tr>
+        <td class="results-first-column-row">Horizontal Multiplier (HM)</td>
+        <td class="results-second-column-row" id="hm-output"></td>
+        <td class="results-third-column-row" id="hm-suggestion"></td>
+      </tr>
+      <tr>
+        <td class="results-first-column-row">Vertical Multiplier (VM)</td>
+        <td class="results-second-column-row" id="vm-output"></td>
+        <td class="results-third-column-row" id="vm-suggestion"></td>
+      </tr>
+      <tr>
+        <td class="results-first-column-row">Distance Multiplier (DM)</td>
+        <td class="results-second-column-row" id="dm-output"></td>
+        <td class="results-third-column-row" id="dm-suggestion"></td>
+      </tr>
+      <tr>
+        <td class="results-first-column-row">Asymmetry Multiplier (AM)</td>
+        <td class="results-second-column-row" id="am-output"></td>
+        <td class="results-third-column-row" id="am-suggestion"></td>
+      </tr>
+      <tr>
+        <td class="results-first-column-row">Frequency Multiplier (FM)</td>
+        <td class="results-second-column-row" id="fm-output"></td>
+        <td class="results-third-column-row" id="fm-suggestion"></td>
+      </tr>
+      <tr>
+        <td class="results-first-column-row">Coupling Multiplier (CM)</td>
+        <td class="results-second-column-row" id="cm-output"></td>
+        <td class="results-third-column-row" id="cm-suggestion"></td>
+      </tr>
+    </table>
     <!-- Footer start -->
     <div class="footer-container">
         <div class="footer-section">
@@ -125,7 +174,6 @@
         <h2>ERGO</h2>
         <h1>NIOSH LIFTING CALCULATOR</h1>
       </div>
-  
   <!-- Footer end -->
 </body>
 <script src="../js/calculator.js"></script>
