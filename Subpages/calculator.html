@@ -9,8 +9,34 @@
 </head>
 
 <body>
+  <header>
+    <nav class="navbar">
+      <div class="nav-top-left">
+        <div class="logo">
+            <img src="../images/chair.png" alt="ERGO">
+        </div>
+        <h2>ERGO</h2>
+      </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">What is NIOSH</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="language-selector">
+            <img src="../images/turkey-flag.png" alt="TR">
+            <img src="../images/uk-flag.png" alt="EN">
+        </div>
+    </nav>
+    <div class="title">
+        <h1>NIOSH LIFTING CALCULATOR</h1>
+    </div>
+</header>
+<!-- Inputs starts here. -->
     <div class="container">
-        <h1>NIOSH Lifting Calculator</h1>
+      <div>
+      </div>
         <div id="inputs">
             <h2><u>INPUTS</u></h2>
             <div class="input-group">
@@ -48,17 +74,17 @@
                 <div class="input-row">
                     <div class="input-cell label">Coupling</div>
                     <div class="input-cell description">How well the worker can grasp the object</div>
-                    <select class="selector" id="coupling-select"></select>
+                    <div class="input-cell input"><select class="selector" id="coupling-select"></select></div>
                 </div>
                 <div class="input-row">
                     <div class="input-cell label">Frequency</div>
                     <div class="input-cell description">the number of lifts per minute</div>
-                    <select class="selector" id="frequency-select"></select>
+                    <div class="input-cell input"><select class="selector" id="frequency-select"></select></div>
                 </div>
                 <div class="input-row">
                     <div class="input-cell label">Duration</div>
                     <div class="input-cell description">the total time spent lifting over a work shift</div>
-                    <select class="selector" id="duration-select"></select>
+                    <div class="input-cell input"><select class="selector" id="duration-select"></select></div>
                 </div>
                 <div class="input-row">
                     <div class="input-cell label">Load Weight</div>
@@ -67,19 +93,19 @@
                 </div>
             </div>
         </div>
-        <div class="button-container">
+        <div class="button-container" id="button-container">
             <div class="first-button-container">
                 <button onclick="calculate()" id="calculate">Calculate</button>
             </div>
             <div class="second-button-container">
-                <button onclick="clearInputs()" id="clear">Clear</button>
-                <button id="print">Print</button>
+                <button onclick="didTapClearButton()" id="clear">Clear</button>
+                <button onclick="didTapPrintButton()" id="print">Print</button>
                 <button id="save">Save</button>
             </div>
         </div>
     </div>
     <!--- Results Start -->
-    <table>
+    <table id="output-table">
       <!-- Table Headers -->
       <tr>
         <th colspan="2" class="table-header">RESULTS</th>
@@ -137,7 +163,6 @@
             <li><a href="#">Give Feedback</a></li>
           </ul>
         </div>
-      
         <div class="footer-section">
           <h3>ABOUT US</h3>
           <ul>
@@ -145,12 +170,10 @@
             <li><a href="#">Contact Us</a></li>
           </ul>
         </div>
-  
        <div class="footer-section">
           <p>Bahcesehir University Guney Campus<br>
              Yildiz, Çırağan Cd., 34349 Beşiktaş/İstanbul<br>
           </p>
-          
           <div class="linker-links">
             <a href="mailto:info@ergo.com">info@ergo.com</a>
               <div class="social-icons">
@@ -160,7 +183,6 @@
               </div>
           </div>
         </div>
-      
         <div class="footer-section">
           <h3>HELP</h3>
           <ul>

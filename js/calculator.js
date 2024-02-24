@@ -41,6 +41,9 @@ const couplingTable = [
     { F: "Poor", "<75cm": 0.90, ">=75cm": 0.90 }
 ];
 
+// Output Table
+var outputTable = document.getElementById("output-table");
+
 //outputs
 var rwlOutput = document.getElementById("rwl-output");
 var liOutput = document.getElementById("li-output");
@@ -51,6 +54,9 @@ var amOutput = document.getElementById("am-output");
 var fmOutput = document.getElementById("fm-output");
 var cmOutput = document.getElementById("cm-output");
 
+// Printing bindings
+var title = document.getElementById("title");
+var actionButtons = document.getElementById("button-container");
 
 for(var i = 0; i < couplingOptions.length; i++) {
     var opt = couplingOptions[i];
@@ -76,6 +82,11 @@ for(var i = 0; i < durationOptions.length; i++) {
     selectDuration.appendChild(el);
 }
 
+function didTapClearButton() {
+    clearInputs()
+    hideOutputTable()
+}
+
 function clearInputs() {
     horizontalLocation.value = null;
     verticalLocation.value = null;
@@ -98,6 +109,8 @@ function calculate() {
     calculateCm()
     calculateRwl()
     calculateLi()
+
+    showOutputTable()
 }
 
 function calculateHm() {
@@ -237,4 +250,37 @@ function checkValues() {
     if (durationOptions == null) {
 
     }
+}
+
+function showOutputTable() {
+    outputTable.style.display = "block";
+}
+
+function hideOutputTable() {
+    outputTable.style.display = "none";
+}
+
+(() => {
+    hideOutputTable();
+})();
+
+function didTapPrintButton() {
+    prepareForPrint()
+    printPage()
+    removePrintingEffect()
+}
+
+function prepareForPrint() {
+    title.innerText = "NIOSH LIFTING Report";
+    actionButtons.style.display = "none";
+}
+
+function printPage() {
+    window.print();
+}
+
+function removePrintingEffect() {
+    title.innerText = "NIOSH Lifting Calculator";
+    actionButtons.style.display = "block";
+
 }
