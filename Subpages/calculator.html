@@ -18,19 +18,19 @@
         <h2>ERGO</h2>
       </div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">What is NIOSH</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a id="Home" href="#">Home</a></li>
+            <li><a id="Aboutus" href="#">About Us</a></li>
+            <li><a id="Blog" href="#">Blog</a></li>
+            <li><a id="WhatIsNiosh" href="#">What is NIOSH</a></li>
+            <li><a id="ContactUs" href="#">Contact Us</a></li>
         </ul>
         <div class="language-selector">
-            <img src="../images/turkey-flag.png" alt="TR">
-            <img src="../images/uk-flag.png" alt="EN">
+            <button class="lang-switch" id="btn-tr"><img src="../images/turkey-flag.png" alt="TR"></button>
+            <button class="lang-switch" id="btn-en"><img src="../images/uk-flag.png" alt="EN"></button>
         </div>
     </nav>
     <div class="title">
-        <h1>NIOSH LIFTING CALCULATOR</h1>
+        <h1 id="CalculatorTitle">NIOSH LIFTING CALCULATOR</h1>
     </div>
 </header>
 <!-- Inputs starts here. -->
@@ -40,7 +40,7 @@
         <div id="inputs">
             <h2><u>INPUTS</u></h2>
             <div class="input-group">
-                <label for="unitOfMeasurement">Unit of Measurement</label>
+                <label id="unitOfMeasurement" for="unitOfMeasurement">Unit of Measurement</label>
                 <select class="unitOfMeasurement" id="unit-of-measurement-select">
                     <option value="metric">Metric</option>
                     <option value="imperial">U.S. Customary</option>
@@ -50,45 +50,47 @@
             <div class="input-header"></div>
             <div class="input-table">
                 <div class="input-row">
-                    <div class="input-cell label">Horizontal Location</div>
-                    <div class="input-cell description">distance from hands to mid-point between medial malleoli
+                    <div class="input-cell label" id="HorizontalLocation">Horizontal Location</div>
+                    <div class="input-cell description" id="HorizontalDescription">distance from hands to mid-point between medial malleoli
                         measured at origin and destination</div>
                     <div class="input-cell input"><input id="horizontal-location-text" type="text"></div>
                 </div>
                 <div class="input-row">
-                    <div class="input-cell label">Vertical Location</div>
-                    <div class="input-cell description">distance from hands above floor measured at origin and
+                    <div class="input-cell label" id="VerticalLocation">Vertical Location</div>
+                    <div class="input-cell description" id="VerticalDescription">distance from hands above floor measured at origin and
                         destination</div>
-                    <div class="input-cell input"><input id="vertical-location-text" type="text"></div>
+                    <div class="input-cell input">
+                      <input id="vertical-location-text" type="text">
+                    </div>
                 </div>
                 <div class="input-row">
-                    <div class="input-cell label">Distance</div>
-                    <div class="input-cell description">vertical travel = high - low</div>
+                    <div class="input-cell label" id="Distance">Distance</div>
+                    <div class="input-cell description" id="DistanceDescription">vertical travel = high - low</div>
                     <div class="input-cell input"><input id="distance-text" type="text"></div>
                 </div>
                 <div class="input-row">
-                    <div class="input-cell label">Angle of Asymmetry</div>
-                    <div class="input-cell description">the angle between asymmetry line and sagittal line</div>
+                    <div class="input-cell label" id="AngleOfAsymmetry">Angle of Asymmetry</div>
+                    <div class="input-cell description" id="AngleDescription">the angle between asymmetry line and sagittal line</div>
                     <div class="input-cell input"><input id="angle-of-asymmetry-text" type="text"></div>
                 </div>
                 <div class="input-row">
-                    <div class="input-cell label">Coupling</div>
-                    <div class="input-cell description">How well the worker can grasp the object</div>
+                    <div class="input-cell label" id="Coupling">Coupling</div>
+                    <div class="input-cell description" id="CouplingDescription">How well the worker can grasp the object</div>
                     <div class="input-cell input"><select class="selector" id="coupling-select"></select></div>
                 </div>
                 <div class="input-row">
-                    <div class="input-cell label">Frequency</div>
-                    <div class="input-cell description">the number of lifts per minute</div>
+                    <div class="input-cell label" id="Frequency">Frequency</div>
+                    <div class="input-cell description" id="FrequencyDescription">the number of lifts per minute</div>
                     <div class="input-cell input"><select class="selector" id="frequency-select"></select></div>
                 </div>
                 <div class="input-row">
-                    <div class="input-cell label">Duration</div>
-                    <div class="input-cell description">the total time spent lifting over a work shift</div>
+                    <div class="input-cell label" id="Duration">Duration</div>
+                    <div class="input-cell description" id="DurationDescription">the total time spent lifting over a work shift</div>
                     <div class="input-cell input"><select class="selector" id="duration-select"></select></div>
                 </div>
                 <div class="input-row">
-                    <div class="input-cell label">Load Weight</div>
-                    <div class="input-cell description">weight of the object lifted</div>
+                    <div class="input-cell label" id="LoadWeight">Load Weight</div>
+                    <div class="input-cell description" id="WeightDescription">weight of the object lifted</div>
                     <div class="input-cell input"><input id="load-weight-text" type="text"></div>
                 </div>
             </div>
@@ -105,69 +107,71 @@
         </div>
     </div>
     <!--- Results Start -->
-    <table id="output-table">
+    <div id="output-table">
+    <table>
       <!-- Table Headers -->
       <tr>
-        <th colspan="2" class="table-header">RESULTS</th>
-        <th class="table-header">RISK LEVEL AND SUGGESTIONS</th>
+        <th colspan="2" class="table-header", id="Results">RESULTS</th>
+        <th class="table-header", id="RiskLevelSuggestions">RISK LEVEL AND SUGGESTIONS</th>
       </tr>
       <!-- Table Rows -->
       <tr>
-        <td class="results-first-column-row">Recommended Weight Limit (RWL)</td>
+        <td class="results-first-column-row" id="RecommendedWeightLimit">Recommended Weight Limit (RWL)</td>
         <td class="results-second-column-row" id="rwl-output"></td>
         <td class="results-third-column-row" id="rwl-suggestion"></td>
       </tr>
       <tr>
-        <td class="results-first-column-row">Lifting Index (LI)</td>
+        <td class="results-first-column-row" id="LiftingIndex">Lifting Index (LI)</td>
         <td class="results-second-column-row" id="li-output"></td>
         <td class="results-third-column-row" id="li-suggestion"></td>
       </tr>
       <tr>
-        <td class="results-first-column-row">Horizontal Multiplier (HM)</td>
+        <td class="results-first-column-row" id="HorizontalMultiplier">Horizontal Multiplier (HM)</td>
         <td class="results-second-column-row" id="hm-output"></td>
         <td class="results-third-column-row" id="hm-suggestion"></td>
       </tr>
       <tr>
-        <td class="results-first-column-row">Vertical Multiplier (VM)</td>
+        <td class="results-first-column-row" id="VerticalMultiplier">Vertical Multiplier (VM)</td>
         <td class="results-second-column-row" id="vm-output"></td>
         <td class="results-third-column-row" id="vm-suggestion"></td>
       </tr>
       <tr>
-        <td class="results-first-column-row">Distance Multiplier (DM)</td>
+        <td class="results-first-column-row" id="DistanceMultiplier">Distance Multiplier (DM)</td>
         <td class="results-second-column-row" id="dm-output"></td>
         <td class="results-third-column-row" id="dm-suggestion"></td>
       </tr>
       <tr>
-        <td class="results-first-column-row">Asymmetry Multiplier (AM)</td>
+        <td class="results-first-column-row" id="AsymmetryMultiplier">Asymmetry Multiplier (AM)</td>
         <td class="results-second-column-row" id="am-output"></td>
         <td class="results-third-column-row" id="am-suggestion"></td>
       </tr>
       <tr>
-        <td class="results-first-column-row">Frequency Multiplier (FM)</td>
+        <td class="results-first-column-row" id="FrequencyMultiplier">Frequency Multiplier (FM)</td>
         <td class="results-second-column-row" id="fm-output"></td>
         <td class="results-third-column-row" id="fm-suggestion"></td>
       </tr>
       <tr>
-        <td class="results-first-column-row">Coupling Multiplier (CM)</td>
+        <td class="results-first-column-row" id="CouplingMultiplier">Coupling Multiplier (CM)</td>
         <td class="results-second-column-row" id="cm-output"></td>
         <td class="results-third-column-row" id="cm-suggestion"></td>
       </tr>
     </table>
+    </div>
     <!-- Footer start -->
     <div class="footer-container">
         <div class="footer-section">
           <h3>ERGO</h3>
           <ul>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Give Feedback</a></li>
+            <li><a id="Blog" href="#">Blog</a></li>
+            <li><a id="PrivacyPolicy" href="#">Privacy Policy</a></li>
+            <li><a id="GiveFeedback" href="#">Give Feedback</a></li>
           </ul>
         </div>
         <div class="footer-section">
-          <h3>ABOUT US</h3>
+          <h3 id="AboutusUppercase">ABOUT US</h3>
           <ul>
-            <li><a href="#">Who are we</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a id="WhoAreWe" href="#">Who are we</a></li>
+            <li><a id="ContactUsFooter" href="#">Contact Us</a></li>
           </ul>
         </div>
        <div class="footer-section">
@@ -184,17 +188,17 @@
           </div>
         </div>
         <div class="footer-section">
-          <h3>HELP</h3>
+          <h3 id="Help">HELP</h3>
           <ul>
-            <li><a href="#">What is NIOSH</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a id="WhatIsNioshFooter" href="#">What is NIOSH</a></li>
+            <li><a id="FAQ" href="#">FAQ</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bar">
-        <img src="./chair.png" alt="ERGO Logo">
+        <img src="../images/chair.png" alt="ERGO Logo" style="width: 40px;">
         <h2>ERGO</h2>
-        <h1>NIOSH LIFTING CALCULATOR</h1>
+        <h1 id="CalculatorTitleFooter">NIOSH LIFTING CALCULATOR</h1>
       </div>
   <!-- Footer end -->
 </body>
