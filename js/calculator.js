@@ -1,3 +1,5 @@
+var currentLanguage = 'en';
+
 var unitOfMeasurement = document.getElementById("unit-of-measurement-select");
 
 var horizontalLocation = document.getElementById("horizontal-location-text");
@@ -56,7 +58,14 @@ var cmOutput = document.getElementById("cm-output");
 
 // Printing bindings
 var title = document.getElementById("title");
+var inputTable = document.getElementById("input-table");
 var actionButtons = document.getElementById("button-container");
+var navButtons = document.getElementById("nav-links");
+var langButtons = document.getElementById("language-selector");
+var footerContainer = document.getElementById("footer-container");
+var onPrintHeader = document.getElementById("on-print-header");
+var onPrintFooter = document.getElementById("on-print-footer");
+var onPrintFooterBar = document.getElementById("footer-bar");
 
 for(var i = 0; i < couplingOptions.length; i++) {
     var opt = couplingOptions[i];
@@ -110,6 +119,7 @@ function calculate() {
     calculateRwl()
     calculateLi()
 
+    generateSuggestions()
     showOutputTable()
 }
 
@@ -264,15 +274,32 @@ function hideOutputTable() {
     hideOutputTable();
 })();
 
+function prepareForSave() {
+    prepareForPrint()
+    updateLanguage(currentLanguage)
+}
+
 function didTapPrintButton() {
     prepareForPrint()
+    updateLanguage(currentLanguage)
     printPage()
     removePrintingEffect()
 }
 
 function prepareForPrint() {
-    title.innerText = "NIOSH LIFTING Report";
+    CalculatorTitle.innerText = "NIOSH LIFTING Report";
     actionButtons.style.display = "none";
+    navButtons.style.display = "none";
+    langButtons.style.display = "none";
+    footerContainer.style.display = "none";
+
+    onPrintHeader.style.display = "block";
+    onPrintFooter.style.display = "flex";
+
+    onPrintFooter.style.justifyContent; "space-between";
+    onPrintFooterBar.style.justifyContent = "space-between";
+
+    inputTable.style.marginBottom = "20px";
 }
 
 function printPage() {
@@ -280,7 +307,201 @@ function printPage() {
 }
 
 function removePrintingEffect() {
-    title.innerText = "NIOSH Lifting Calculator";
+    CalculatorTitle.innerText = "NIOSH Lifting Calculator";
     actionButtons.style.display = "block";
+    navButtons.style.display = "block";
+    langButtons.style.display = "block";
+    footerContainer.style.display = "flex";
+
+    onPrintHeader.style.display = "none";
+    onPrintFooter.style.display = "none";
+
+    onPrintFooter.style.justifyContent; "flex-start";
+    onPrintFooterBar.style.justifyContent = "flex-start";
+
+    inputTable.style.marginBottom = "0px";
+}
+
+const languages = {
+    en: {
+        Home: "Home",
+        Aboutus: "About Us",
+        Blog: "Blog",
+        WhatIsNiosh: "What is NIOSH",
+        ContactUs: "Contact Us",
+        onPrintHeader: "\"Safer Workplaces a Healtier Future\"",
+        CalculatorTitle: "NIOSH LIFTING CALCULATOR",
+        Inputs: "INPUTS",
+        unitOfMeasurement: "Unit of Measurement",
+        HorizontalLocation: "Horizontal Location",
+        HorizontalDescription: "distance from hands to mid-point between medial malleoli measured at origin and destination",
+        VerticalLocation: "Vertical Location",
+        VerticalDescription: "distance from hands above floor measured at origin and destination",
+        Distance: "Distance",
+        DistanceDescription: "vertical travel = high - low",
+        AngleOfAsymmetry: "Angle of Asymmetry",
+        AngleDescription: "the angle between asymmetry line and sagittal line",
+        Coupling: "Coupling",
+        CouplingDescription: "How well the worker can grasp the object",
+        Frequency: "Frequency",
+        FrequencyDescription: "the number of lifts per minute",
+        Duration: "Duration",
+        DurationDescription: "the total time spent lifting over a work shift",
+        LoadWeight: "Load Weight",
+        WeightDescription: "weight of the object lifted",
+        calculate: "Calculate",
+        clear: "Clear",
+        print: "Print",
+        save: "Save",
+        Results: "RESULTS",
+        RiskLevelSuggestions: "RISK LEVEL AND SUGGESTIONS",
+        RecommendedWeightLimit: "Recommended Weight Limit (RWL)",
+        LiftingIndex: "Lifting Index (LI)",
+        HorizontalMultiplier: "Horizontal Multiplier (HM)",
+        VerticalMultiplier: "Vertical Multiplier (VM)",
+        DistanceMultiplier: "Distance Multiplier (DM)",
+        AsymmetryMultiplier: "Asymmetry Multiplier (AM)",
+        FrequencyMultiplier: "Frequency Multiplier (FM)",
+        CouplingMultiplier: "Coupling Multiplier (CM)",
+        PrivacyPolicy: "Privacy Policy",
+        GiveFeedback: "Give Feedback",
+        AboutusUppercase: "ABOUT US",
+        WhoAreWe: "Who are we",
+        ContactUsFooter: "Contact Us",
+        Help: "HELP",
+        WhatIsNioshFooter: "What is NIOSH",
+        FAQ: "FAQ",
+        CalculatorTitleFooter: "NIOSH LIFTING CALCULATOR"
+    },
+    tr: {
+        Home: "Ana Sayfa",
+        Aboutus: "Hakkımızda",
+        Blog: "Blog",
+        WhatIsNiosh: "NIOSH Nedir",
+        ContactUs: "İletişim",
+        onPrintHeader: "\"Güvenli Çalışma Alanı, Sağlıklı bir gelecek\"",
+        CalculatorTitle: "NIOSH KALDIRMA HESAPLAYICI",
+        Inputs: "GİRDİLER",
+        unitOfMeasurement: "Ölçü Birimi",
+        HorizontalLocation: "Yatay Konum",
+        HorizontalDescription: "ellerin medial malleoller arasındaki orta noktaya olan mesafesi, başlangıç ve varış noktasında ölçülür.",
+        VerticalLocation: "Dikey Konum",
+        VerticalDescription: "ellerin yerden yüksekliği, başlangıç ve varış noktasında ölçülür",
+        Distance: "Mesafe",
+        DistanceDescription: "dikey seyahat = yüksek - düşük",
+        AngleOfAsymmetry: "Asimetri Açısı",
+        AngleDescription: "asimetri çizgisi ile sagittal çizgi arasındaki açı",
+        Coupling: "Bağlantı",
+        CouplingDescription: "işçinin nesneyi ne kadar iyi kavrayabildiği",
+        Frequency: "Frekans",
+        FrequencyDescription: "dakika başına yapılan kaldırma sayısı",
+        Duration: "Süre",
+        DurationDescription: "bir iş vardiyası boyunca kaldırma üzerinde harcanan toplam süre",
+        LoadWeight: "Yük Ağırlığı",
+        WeightDescription: "kaldırılan nesnenin ağırlığı",
+        calculate: "Hesapla",
+        clear: "Temizle",
+        print: "Yazdır",
+        save: "Kaydet",
+        Results: "SONUÇLAR",
+        RiskLevelSuggestions: "RISK SEVİYESİ VE ÖNERİLER",
+        RecommendedWeightLimit: "Önerilen Ağırlık Limiti (RWL)",
+        LiftingIndex: "Kaldırma İndeksi (LI)",
+        HorizontalMultiplier: "Yatay Çarpan (HM)",
+        VerticalMultiplier: "Dikey Çarpan (VM)",
+        DistanceMultiplier: "Mesafe Çarpanı (DM)",
+        AsymmetryMultiplier: "Asimetri Çarpanı (AM)",
+        FrequencyMultiplier: "Frekans Çarpanı (FM)",
+        CouplingMultiplier: "Bağlantı Çarpanı (CM)",
+        PrivacyPolicy: "Gizlilik Politikası",
+        GiveFeedback: "Geri Dönüş Bildir",
+        AboutusUppercase: "HAKKIMIZDA",
+        WhoAreWe: "Biz Kimiz",
+        ContactUsFooter: "Bize Ulaşın",
+        Help: "YARDIM",
+        WhatIsNioshFooter: "NIOSH Nedir",
+        FAQ: "FAQ",
+        CalculatorTitleFooter: "NIOSH KALDIRMA HESAPLAYICI"
+    }
+};
+
+function updateLanguage(language) {
+    currentLanguage = language;
+
+    document.getElementById('Home').textContent = languages[language].Home;
+    document.getElementById('Aboutus').textContent = languages[language].Aboutus;
+    document.getElementById('Blog').textContent = languages[language].Blog;
+    document.getElementById('WhatIsNiosh').textContent = languages[language].WhatIsNiosh;
+    document.getElementById('ContactUs').textContent = languages[language].ContactUs;
+    document.getElementById("on-print-header").textContent = languages[language].onPrintHeader;
+
+    document.getElementById('CalculatorTitle').textContent = languages[language].CalculatorTitle;
+    document.getElementById("Inputs").textContent = languages[language].Inputs;
+    document.getElementById('unitOfMeasurement').textContent = languages[language].unitOfMeasurement;
+    document.getElementById('HorizontalLocation').textContent = languages[language].HorizontalLocation;
+    document.getElementById('HorizontalDescription').textContent = languages[language].HorizontalDescription;
+    document.getElementById('VerticalLocation').textContent = languages[language].VerticalLocation;
+    document.getElementById('VerticalDescription').textContent = languages[language].VerticalDescription;
+    document.getElementById('Distance').textContent = languages[language].Distance;
+    document.getElementById('DistanceDescription').textContent = languages[language].DistanceDescription;
+    document.getElementById('AngleOfAsymmetry').textContent = languages[language].AngleOfAsymmetry;
+    document.getElementById('AngleDescription').textContent = languages[language].AngleDescription;
+    document.getElementById('Coupling').textContent = languages[language].Coupling;
+    document.getElementById('CouplingDescription').textContent = languages[language].CouplingDescription;
+    document.getElementById('Frequency').textContent = languages[language].Frequency;
+    document.getElementById('FrequencyDescription').textContent = languages[language].FrequencyDescription;
+    document.getElementById('Duration').textContent = languages[language].Duration;
+    document.getElementById('DurationDescription').textContent = languages[language].DurationDescription;
+    document.getElementById('LoadWeight').textContent = languages[language].LoadWeight;
+    document.getElementById('WeightDescription').textContent = languages[language].WeightDescription;
+    document.getElementById('calculate').textContent = languages[language].calculate;
+    document.getElementById('clear').textContent = languages[language].clear;
+    document.getElementById('print').textContent = languages[language].print;
+    document.getElementById('save').textContent = languages[language].save;
+    document.getElementById('Results').textContent = languages[language].Results;
+    document.getElementById('RiskLevelSuggestions').textContent = languages[language].RiskLevelSuggestions;
+    document.getElementById('RecommendedWeightLimit').textContent = languages[language].RecommendedWeightLimit;
+    document.getElementById('LiftingIndex').textContent = languages[language].LiftingIndex;
+    document.getElementById('HorizontalMultiplier').textContent = languages[language].HorizontalMultiplier;
+    document.getElementById('VerticalMultiplier').textContent = languages[language].VerticalMultiplier;
+    document.getElementById('DistanceMultiplier').textContent = languages[language].DistanceMultiplier;
+    document.getElementById('AsymmetryMultiplier').textContent = languages[language].AsymmetryMultiplier;
+    document.getElementById('FrequencyMultiplier').textContent = languages[language].FrequencyMultiplier;
+    document.getElementById('CouplingMultiplier').textContent = languages[language].CouplingMultiplier;
+    
+    document.getElementById('PrivacyPolicy').textContent = languages[language].PrivacyPolicy;
+    document.getElementById('GiveFeedback').textContent = languages[language].GiveFeedback;
+    document.getElementById('AboutusUppercase').textContent = languages[language].AboutusUppercase;
+    document.getElementById('WhoAreWe').textContent = languages[language].WhoAreWe;
+    document.getElementById('ContactUsFooter').textContent = languages[language].ContactUsFooter;
+    document.getElementById('Help').textContent = languages[language].Help;
+    document.getElementById('WhatIsNioshFooter').textContent = languages[language].WhatIsNioshFooter;
+    document.getElementById('FAQ').textContent = languages[language].FAQ;
+    document.getElementById('CalculatorTitleFooter').textContent = languages[language].CalculatorTitleFooter;
+    
+
+    //2 CONDITION TEXT
+    /*
+    var titleText = document.getElementById('Home').textContent;
+    
+    if (titleText === languages.en.welcome || titleText === languages.en.goodbye) {
+        document.getElementById('title').textContent = languages[language].title;
+    } else {
+        document.getElementById('title').textContent = languages[language].goodbye;
+    } */
+    //END
+
+    generateSuggestions()
+}
+
+document.getElementById('btn-en').addEventListener('click', function() {
+    updateLanguage('en');
+});
+
+document.getElementById('btn-tr').addEventListener('click', function() {
+    updateLanguage('tr');
+});
+
+function generateSuggestions() {
 
 }
