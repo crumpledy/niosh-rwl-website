@@ -58,7 +58,14 @@ var cmOutput = document.getElementById("cm-output");
 
 // Printing bindings
 var title = document.getElementById("title");
+var inputTable = document.getElementById("input-table");
 var actionButtons = document.getElementById("button-container");
+var navButtons = document.getElementById("nav-links");
+var langButtons = document.getElementById("language-selector");
+var footerContainer = document.getElementById("footer-container");
+var onPrintHeader = document.getElementById("on-print-header");
+var onPrintFooter = document.getElementById("on-print-footer");
+var onPrintFooterBar = document.getElementById("footer-bar");
 
 for(var i = 0; i < couplingOptions.length; i++) {
     var opt = couplingOptions[i];
@@ -267,15 +274,32 @@ function hideOutputTable() {
     hideOutputTable();
 })();
 
+function prepareForSave() {
+    prepareForPrint()
+    updateLanguage(currentLanguage)
+}
+
 function didTapPrintButton() {
     prepareForPrint()
+    updateLanguage(currentLanguage)
     printPage()
     removePrintingEffect()
 }
 
 function prepareForPrint() {
-    title.innerText = "NIOSH LIFTING Report";
+    CalculatorTitle.innerText = "NIOSH LIFTING Report";
     actionButtons.style.display = "none";
+    navButtons.style.display = "none";
+    langButtons.style.display = "none";
+    footerContainer.style.display = "none";
+
+    onPrintHeader.style.display = "block";
+    onPrintFooter.style.display = "flex";
+
+    onPrintFooter.style.justifyContent; "space-between";
+    onPrintFooterBar.style.justifyContent = "space-between";
+
+    inputTable.style.marginBottom = "20px";
 }
 
 function printPage() {
@@ -283,9 +307,19 @@ function printPage() {
 }
 
 function removePrintingEffect() {
-    title.innerText = "NIOSH Lifting Calculator";
+    CalculatorTitle.innerText = "NIOSH Lifting Calculator";
     actionButtons.style.display = "block";
+    navButtons.style.display = "block";
+    langButtons.style.display = "block";
+    footerContainer.style.display = "flex";
 
+    onPrintHeader.style.display = "none";
+    onPrintFooter.style.display = "none";
+
+    onPrintFooter.style.justifyContent; "flex-start";
+    onPrintFooterBar.style.justifyContent = "flex-start";
+
+    inputTable.style.marginBottom = "0px";
 }
 
 const languages = {
@@ -295,7 +329,9 @@ const languages = {
         Blog: "Blog",
         WhatIsNiosh: "What is NIOSH",
         ContactUs: "Contact Us",
+        onPrintHeader: "\"Safer Workplaces a Healtier Future\"",
         CalculatorTitle: "NIOSH LIFTING CALCULATOR",
+        Inputs: "INPUTS",
         unitOfMeasurement: "Unit of Measurement",
         HorizontalLocation: "Horizontal Location",
         HorizontalDescription: "distance from hands to mid-point between medial malleoli measured at origin and destination",
@@ -343,7 +379,9 @@ const languages = {
         Blog: "Blog",
         WhatIsNiosh: "NIOSH Nedir",
         ContactUs: "İletişim",
+        onPrintHeader: "\"Güvenli Çalışma Alanı, Sağlıklı bir gelecek\"",
         CalculatorTitle: "NIOSH KALDIRMA HESAPLAYICI",
+        Inputs: "GİRDİLER",
         unitOfMeasurement: "Ölçü Birimi",
         HorizontalLocation: "Yatay Konum",
         HorizontalDescription: "ellerin medial malleoller arasındaki orta noktaya olan mesafesi, başlangıç ve varış noktasında ölçülür.",
@@ -395,7 +433,10 @@ function updateLanguage(language) {
     document.getElementById('Blog').textContent = languages[language].Blog;
     document.getElementById('WhatIsNiosh').textContent = languages[language].WhatIsNiosh;
     document.getElementById('ContactUs').textContent = languages[language].ContactUs;
+    document.getElementById("on-print-header").textContent = languages[language].onPrintHeader;
+
     document.getElementById('CalculatorTitle').textContent = languages[language].CalculatorTitle;
+    document.getElementById("Inputs").textContent = languages[language].Inputs;
     document.getElementById('unitOfMeasurement').textContent = languages[language].unitOfMeasurement;
     document.getElementById('HorizontalLocation').textContent = languages[language].HorizontalLocation;
     document.getElementById('HorizontalDescription').textContent = languages[language].HorizontalDescription;
@@ -440,13 +481,14 @@ function updateLanguage(language) {
     
 
     //2 CONDITION TEXT
+    /*
     var titleText = document.getElementById('Home').textContent;
     
     if (titleText === languages.en.welcome || titleText === languages.en.goodbye) {
         document.getElementById('title').textContent = languages[language].title;
     } else {
         document.getElementById('title').textContent = languages[language].goodbye;
-    }
+    } */
     //END
 
     generateSuggestions()

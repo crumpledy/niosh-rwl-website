@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIOSH Lifting Calculator</title>
-    <link rel="stylesheet" href="../css/calculatorStyles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIOSH Lifting Calculator</title>
+  <link rel="stylesheet" href="../css/calculatorStyles.css">
 </head>
 
 <body>
@@ -13,106 +13,111 @@
     <nav class="navbar">
       <div class="nav-top-left">
         <div class="logo">
-            <img src="../images/chair.png" alt="ERGO">
+          <img src="../images/chair.png" alt="ERGO">
         </div>
         <h2>ERGO</h2>
       </div>
-        <ul class="nav-links">
-            <li><a id="Home" href="#">Home</a></li>
-            <li><a id="Aboutus" href="#">About Us</a></li>
-            <li><a id="Blog" href="#">Blog</a></li>
-            <li><a id="WhatIsNiosh" href="#">What is NIOSH</a></li>
-            <li><a id="ContactUs" href="#">Contact Us</a></li>
-        </ul>
-        <div class="language-selector">
-            <button class="lang-switch" id="btn-tr"><img src="../images/turkey-flag.png" alt="TR"></button>
-            <button class="lang-switch" id="btn-en"><img src="../images/uk-flag.png" alt="EN"></button>
-        </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a id="Home" href="#">Home</a></li>
+        <li><a id="Aboutus" href="#">About Us</a></li>
+        <li><a id="Blog" href="#">Blog</a></li>
+        <li><a id="WhatIsNiosh" href="#">What is NIOSH</a></li>
+        <li><a id="ContactUs" href="#">Contact Us</a></li>
+      </ul>
+      <div class="on-print-header" id="on-print-header">"Safer Workplaces a Healtier Future"</div>
+      <div class="language-selector" id="language-selector">
+        <button class="lang-switch" id="btn-tr"><img src="../images/turkey-flag.png" alt="TR"></button>
+        <button class="lang-switch" id="btn-en"><img src="../images/uk-flag.png" alt="EN"></button>
+      </div>
     </nav>
     <div class="title">
-        <h1 id="CalculatorTitle">NIOSH LIFTING CALCULATOR</h1>
+      <h1 id="CalculatorTitle">NIOSH LIFTING CALCULATOR</h1>
     </div>
-</header>
-<!-- Inputs starts here. -->
-    <div class="container">
-      <div>
+  </header>
+  <!-- Inputs starts here. -->
+  <div class="container">
+    <div>
+    </div>
+    <div id="inputs">
+      <h2><u id="Inputs">INPUTS</u></h2>
+      <div class="input-group">
+        <label id="unitOfMeasurement" for="unitOfMeasurement">Unit of Measurement</label>
+        <select class="unitOfMeasurement" id="unit-of-measurement-select">
+          <option value="metric">Metric</option>
+          <option value="imperial">U.S. Customary</option>
+        </select>
       </div>
-        <div id="inputs">
-            <h2><u>INPUTS</u></h2>
-            <div class="input-group">
-                <label id="unitOfMeasurement" for="unitOfMeasurement">Unit of Measurement</label>
-                <select class="unitOfMeasurement" id="unit-of-measurement-select">
-                    <option value="metric">Metric</option>
-                    <option value="imperial">U.S. Customary</option>
-                </select>
-            </div>
 
-            <div class="input-header"></div>
-            <div class="input-table">
-                <div class="input-row">
-                    <div class="input-cell label" id="HorizontalLocation">Horizontal Location</div>
-                    <div class="input-cell description" id="HorizontalDescription">distance from hands to mid-point between medial malleoli
-                        measured at origin and destination</div>
-                    <div class="input-cell input"><input id="horizontal-location-text" type="text"></div>
-                </div>
-                <div class="input-row">
-                    <div class="input-cell label" id="VerticalLocation">Vertical Location</div>
-                    <div class="input-cell description" id="VerticalDescription">distance from hands above floor measured at origin and
-                        destination</div>
-                    <div class="input-cell input">
-                      <input id="vertical-location-text" type="text">
-                    </div>
-                </div>
-                <div class="input-row">
-                    <div class="input-cell label" id="Distance">Distance</div>
-                    <div class="input-cell description" id="DistanceDescription">vertical travel = high - low</div>
-                    <div class="input-cell input"><input id="distance-text" type="text"></div>
-                </div>
-                <div class="input-row">
-                    <div class="input-cell label" id="AngleOfAsymmetry">Angle of Asymmetry</div>
-                    <div class="input-cell description" id="AngleDescription">the angle between asymmetry line and sagittal line</div>
-                    <div class="input-cell input"><input id="angle-of-asymmetry-text" type="text"></div>
-                </div>
-                <div class="input-row">
-                    <div class="input-cell label" id="Coupling">Coupling</div>
-                    <div class="input-cell description" id="CouplingDescription">How well the worker can grasp the object</div>
-                    <div class="input-cell input"><select class="selector" id="coupling-select"></select></div>
-                </div>
-                <div class="input-row">
-                    <div class="input-cell label" id="Frequency">Frequency</div>
-                    <div class="input-cell description" id="FrequencyDescription">the number of lifts per minute</div>
-                    <div class="input-cell input"><select class="selector" id="frequency-select"></select></div>
-                </div>
-                <div class="input-row">
-                    <div class="input-cell label" id="Duration">Duration</div>
-                    <div class="input-cell description" id="DurationDescription">the total time spent lifting over a work shift</div>
-                    <div class="input-cell input"><select class="selector" id="duration-select"></select></div>
-                </div>
-                <div class="input-row">
-                    <div class="input-cell label" id="LoadWeight">Load Weight</div>
-                    <div class="input-cell description" id="WeightDescription">weight of the object lifted</div>
-                    <div class="input-cell input"><input id="load-weight-text" type="text"></div>
-                </div>
-            </div>
+      <div class="input-header"></div>
+      <div class="input-table", id="input-table">
+        <div class="input-row">
+          <div class="input-cell label" id="HorizontalLocation">Horizontal Location</div>
+          <div class="input-cell description" id="HorizontalDescription">distance from hands to mid-point between medial
+            malleoli
+            measured at origin and destination</div>
+          <div class="input-cell input"><input id="horizontal-location-text" type="text"></div>
         </div>
-        <div class="button-container" id="button-container">
-            <div class="first-button-container">
-                <button onclick="calculate()" id="calculate">Calculate</button>
-            </div>
-            <div class="second-button-container">
-                <button onclick="didTapClearButton()" id="clear">Clear</button>
-                <button onclick="didTapPrintButton()" id="print">Print</button>
-                <button id="save">Save</button>
-            </div>
+        <div class="input-row">
+          <div class="input-cell label" id="VerticalLocation">Vertical Location</div>
+          <div class="input-cell description" id="VerticalDescription">distance from hands above floor measured at
+            origin and
+            destination</div>
+          <div class="input-cell input">
+            <input id="vertical-location-text" type="text">
+          </div>
         </div>
+        <div class="input-row">
+          <div class="input-cell label" id="Distance">Distance</div>
+          <div class="input-cell description" id="DistanceDescription">vertical travel = high - low</div>
+          <div class="input-cell input"><input id="distance-text" type="text"></div>
+        </div>
+        <div class="input-row">
+          <div class="input-cell label" id="AngleOfAsymmetry">Angle of Asymmetry</div>
+          <div class="input-cell description" id="AngleDescription">the angle between asymmetry line and sagittal line
+          </div>
+          <div class="input-cell input"><input id="angle-of-asymmetry-text" type="text"></div>
+        </div>
+        <div class="input-row">
+          <div class="input-cell label" id="Coupling">Coupling</div>
+          <div class="input-cell description" id="CouplingDescription">How well the worker can grasp the object</div>
+          <div class="input-cell input"><select class="selector" id="coupling-select"></select></div>
+        </div>
+        <div class="input-row">
+          <div class="input-cell label" id="Frequency">Frequency</div>
+          <div class="input-cell description" id="FrequencyDescription">the number of lifts per minute</div>
+          <div class="input-cell input"><select class="selector" id="frequency-select"></select></div>
+        </div>
+        <div class="input-row">
+          <div class="input-cell label" id="Duration">Duration</div>
+          <div class="input-cell description" id="DurationDescription">the total time spent lifting over a work shift
+          </div>
+          <div class="input-cell input"><select class="selector" id="duration-select"></select></div>
+        </div>
+        <div class="input-row">
+          <div class="input-cell label" id="LoadWeight">Load Weight</div>
+          <div class="input-cell description" id="WeightDescription">weight of the object lifted</div>
+          <div class="input-cell input"><input id="load-weight-text" type="text"></div>
+        </div>
+      </div>
     </div>
-    <!--- Results Start -->
-    <div id="output-table">
+    <div class="button-container" id="button-container">
+      <div class="first-button-container">
+        <button onclick="calculate()" id="calculate">Calculate</button>
+      </div>
+      <div class="second-button-container">
+        <button onclick="didTapClearButton()" id="clear">Clear</button>
+        <button onclick="didTapPrintButton()" id="print">Print</button>
+        <button onclick="didTapSaveButton()" id="save">Save</button>
+      </div>
+    </div>
+  </div>
+  <!--- Results Start -->
+  <div id="output-table">
     <table>
       <!-- Table Headers -->
       <tr>
-        <th colspan="2" class="table-header", id="Results">RESULTS</th>
-        <th class="table-header", id="RiskLevelSuggestions">RISK LEVEL AND SUGGESTIONS</th>
+        <th colspan="2" class="table-header" , id="Results">RESULTS</th>
+        <th class="table-header" , id="RiskLevelSuggestions">RISK LEVEL AND SUGGESTIONS</th>
       </tr>
       <!-- Table Rows -->
       <tr>
@@ -156,51 +161,74 @@
         <td class="results-third-column-row" id="cm-suggestion"></td>
       </tr>
     </table>
+  </div>
+  <!-- Footer start -->
+  <div class="footer-container" id="footer-container">
+    <div class="footer-section">
+      <h3>ERGO</h3>
+      <ul>
+        <li><a id="Blog" href="#">Blog</a></li>
+        <li><a id="PrivacyPolicy" href="#">Privacy Policy</a></li>
+        <li><a id="GiveFeedback" href="#">Give Feedback</a></li>
+      </ul>
     </div>
-    <!-- Footer start -->
-    <div class="footer-container">
-        <div class="footer-section">
-          <h3>ERGO</h3>
-          <ul>
-            <li><a id="Blog" href="#">Blog</a></li>
-            <li><a id="PrivacyPolicy" href="#">Privacy Policy</a></li>
-            <li><a id="GiveFeedback" href="#">Give Feedback</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3 id="AboutusUppercase">ABOUT US</h3>
-          <ul>
-            <li><a id="WhoAreWe" href="#">Who are we</a></li>
-            <li><a id="ContactUsFooter" href="#">Contact Us</a></li>
-          </ul>
-        </div>
-       <div class="footer-section">
-          <p>Bahcesehir University Guney Campus<br>
-             Yildiz, Çırağan Cd., 34349 Beşiktaş/İstanbul<br>
-          </p>
-          <div class="linker-links">
-            <a href="mailto:info@ergo.com">info@ergo.com</a>
-              <div class="social-icons">
-                <a href="#"><img src="../images/facebook-circle.svg" alt="Facebook linker" id="svgImageFacebook"></a>
-                <a href="#"><img src="../images/youtube-circle.svg" alt="YouTube linker" id="svgImageYoutube"></a>
-                <a href="#"><img src="../images/twitter-circle.svg" alt="Twitter linker" id="svgImageTwitter"></a>
-              </div>
-          </div>
-        </div>
-        <div class="footer-section">
-          <h3 id="Help">HELP</h3>
-          <ul>
-            <li><a id="WhatIsNioshFooter" href="#">What is NIOSH</a></li>
-            <li><a id="FAQ" href="#">FAQ</a></li>
-          </ul>
+    <div class="footer-section">
+      <h3 id="AboutusUppercase">ABOUT US</h3>
+      <ul>
+        <li><a id="WhoAreWe" href="#">Who are we</a></li>
+        <li><a id="ContactUsFooter" href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <p>Bahcesehir University Guney Campus<br>
+        Yildiz, Çırağan Cd., 34349 Beşiktaş/İstanbul<br>
+      </p>
+      <div class="linker-links">
+        <a href="mailto:info@ergo.com">info@ergo.com</a>
+        <div class="social-icons">
+          <a href="#"><img src="../images/facebook-circle.svg" alt="Facebook linker" id="svgImageFacebook"></a>
+          <a href="#"><img src="../images/youtube-circle.svg" alt="YouTube linker" id="svgImageYoutube"></a>
+          <a href="#"><img src="../images/twitter-circle.svg" alt="Twitter linker" id="svgImageTwitter"></a>
         </div>
       </div>
-      <div class="footer-bar">
-        <img src="../images/chair.png" alt="ERGO Logo" style="width: 40px;">
-        <h2>ERGO</h2>
-        <h1 id="CalculatorTitleFooter">NIOSH LIFTING CALCULATOR</h1>
+    </div>
+    <div class="footer-section">
+      <h3 id="Help">HELP</h3>
+      <ul>
+        <li><a id="WhatIsNioshFooter" href="#">What is NIOSH</a></li>
+        <li><a id="FAQ" href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bar", id="footer-bar">
+    <img src="../images/chair.png" alt="ERGO Logo" style="width: 40px;">
+    <h2>ERGO</h2>
+    <h1 id="CalculatorTitleFooter">NIOSH LIFTING CALCULATOR</h1>
+    <div class="on-print-footer" id="on-print-footer">
+      <p>Bahcesehir University Guney Campus<br>
+        Yildiz, Çırağan Cd., 34349 Beşiktaş/İstanbul</p>
+    <div class="on-print-footer-info", id="on-print-footer-info">
+        <a href="mailto:info@ergo.com">info@ergo.com</a>
+      <div class="social-icons">
+        <a href="#"><img src="../images/facebook-circle.svg" alt="Facebook linker" id="svgImageFacebook"></a>
+        <a href="#"><img src="../images/youtube-circle.svg" alt="YouTube linker" id="svgImageYoutube"></a>
+        <a href="#"><img src="../images/twitter-circle.svg" alt="Twitter linker" id="svgImageTwitter"></a>
       </div>
+    </div>
+    </div>
+  </div>
   <!-- Footer end -->
 </body>
 <script src="../js/calculator.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+<script>
+async function didTapSaveButton() {
+  await prepareForSave()
+  await downloadPDF()
+  removePrintingEffect()
+}
+function downloadPDF() {
+  html2pdf().from(document.body).save('NIOSH-Report.pdf');
+}
+</script>
 </html>

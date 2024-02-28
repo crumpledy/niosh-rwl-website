@@ -1,3 +1,26 @@
+@media print {
+     body,
+     html {
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+     }
+}
+
+.on-print-header {
+     display: none;
+     margin-right: 15%;
+     font-size: 25px;
+}
+
+.on-print-footer {
+     display: none;
+     
+}
+
+.on-print-footer p {
+     font-size: 10px;
+}
+
 body {
      font-family: Arial, sans-serif;
 }
@@ -271,6 +294,26 @@ button {
      height: auto;
 }
 
+.footer-bar .on-print-footer-info {
+     display: block;
+     justify-content: center;
+}
+
+.footer-bar .social-icons {
+     display: flex;
+     justify-content: center;
+     flex-direction: row;
+}
+
+.footer-bar .social-icons a {
+     margin-right: 5px;
+}
+
+.footer-bar .social-icons img {
+     width: 20px;
+     height: auto;
+}
+
 #svgImageFacebook {
      filter: invert(33%) sepia(85%) saturate(4141%) hue-rotate(208deg) brightness(101%) contrast(101%);
 }
@@ -291,12 +334,14 @@ button {
      font-family: Arial, sans-serif;
      align-content: center;
      justify-content: flex-start;
+     display: flex;
+     flex-direction: row;
+     box-sizing: border-box;
 }
 
 .footer-bar img {
      vertical-align: middle;
-     margin-right: 10px;
-     padding-left: 30px;
+     margin: 10px;
 }
 
 .footer-bar h1 {
