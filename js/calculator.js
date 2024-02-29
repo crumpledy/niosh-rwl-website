@@ -123,48 +123,58 @@ function calculate() {
     showOutputTable()
 }
 
+function isUsMeasurement(value) {
+    var isUsMeasurement = false
+
+    if(unitOfMeasurement.value != "metric") {
+        return value * 2.54
+    }
+
+    return value
+}
+
 function calculateHm() {
-    if (horizontalLocation.value <= 25) {
+    if (isUsMeasurement(horizontalLocation.value) <= 25) {
         hmOutput.innerText = 1;
-    } else if (horizontalLocation.value >= 63) {
+    } else if (isUsMeasurement(horizontalLocation.value) >= 63) {
         hmOutput.innerText = 0;
     } else {
-        hmOutput.innerText = 25/horizontalLocation.value;
+        hmOutput.innerText = 25/isUsMeasurement(horizontalLocation.value);
     }
 }
 
 function calculateVm() {
-    if (verticalLocation.value <= 75) {
+    if (isUsMeasurement(verticalLocation.value) <= 75) {
         vmOutput.innerText = 1;
-    } else if (verticalLocation.value >= 175) {
+    } else if (isUsMeasurement(verticalLocation.value) >= 175) {
         vmOutput.innerText = 0;
     } else {
-        vmOutput.innerText = 1-(0.003*Math.abs(verticalLocation.value - 75));
+        vmOutput.innerText = 1-(0.003*Math.abs(isUsMeasurement(verticalLocation.value) - 75));
     }
 }
 
 function calculateDm() {
-    if (distance.value <= 25) {
+    if (isUsMeasurement(distance.value) <= 25) {
         dmOutput.innerText = 1;
-    } else if (distance.value >= 175) {
+    } else if (isUsMeasurement(distance.value) >= 175) {
         dmOutput.innerText = 0;
     } else {
-        dmOutput.innerText = 0.85 * (4.5/distance.value);
+        dmOutput.innerText = 0.85 * (4.5/isUsMeasurement(distance.value));
     }
 }
 
 function calculateAm() {
-    if (angleOfAsymmetry.value <= 0) {
+    if (isUsMeasurement(angleOfAsymmetry.value) <= 0) {
         amOutput.innerText = 1;
-    } else if (angleOfAsymmetry.value >= 135) {
+    } else if (isUsMeasurement(angleOfAsymmetry.value) >= 135) {
         amOutput.innerText = 0;
     } else {
-        amOutput.innerText = 1-(0.0032*angleOfAsymmetry.value);
+        amOutput.innerText = 1-(0.0032*isUsMeasurement(angleOfAsymmetry.value));
     }
 }
 
 function calculateFm() {
-    fmOutput.innerText = getTableValue(selectFrequency.value, selectDuration.value, verticalLocation.value);
+    fmOutput.innerText = getTableValue(selectFrequency.value, selectDuration.value, isUsMeasurement(verticalLocation.value));
 }
 
 function getTableValue(frequency, workDuration, verticalHeight) {
