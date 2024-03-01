@@ -1,0 +1,245 @@
+.start-button {
+    position: absolute; /* Mutlak pozisyon */
+    top: 93%; /* Üst kenarı görselin yarısı kadar aşağıda */
+    left: 50%; /* Sol kenarı görselin yarısı kadar sağda */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    padding: 30px 65px; /* Butonun iç boşluğu */
+    background-color: #4242f7; /* Arka plan rengi */
+    color: white; /* Metin rengi */
+    border: 5px solid #000000; /* Kenarlık yok */
+    cursor: pointer; /* İmleci el işareti yap */
+    font-size: 50px;
+    
+  }
+  .ust-yazi {
+    position: absolute;
+    top: 50%; /* Görselin yüksekliğinin ortasına yerleştirme */
+    left: 50%; /* Görselin genişliğinin ortasına yerleştirme */
+    transform: translate(-50%, -50%); /* Merkezden hizalama */
+    color: white; /* Yazı rengi */
+    font-size: 85px; /* Yazı boyutu */
+    font-weight: bolder; /* Yazı kalınlığı */
+    font-style: inherit;
+  }
+  .ust-yazi1 {
+    position: absolute;
+    top: 25%; /* Görselin yüksekliğinin ortasına yerleştirme */
+    left: 50%; /* Görselin genişliğinin ortasına yerleştirme */
+    transform: translate(-50%, -50%); /* Merkezden hizalama */
+    color: white; /* Yazı rengi */
+    font-size: 85px; /* Yazı boyutu */
+    font-weight: bolder; /* Yazı kalınlığı */
+    font-style: inherit;
+  }
+  .ana-görsel {
+    filter: brightness(0.3);
+  }
+  .homepage-button1{
+    position: relative;
+    left: 210px;
+    top: -60px; 
+    width: 150px;
+    height: 60px;
+    font-size: 25px;
+    background: #209cff;
+    margin-right: 50px;
+  
+  }
+  .homepage-button2{
+    position: relative;
+    top: -60px; 
+    left: 210px;
+    width: 150px;
+    height: 60px;
+    font-size: 25px;
+    background: #209cff;
+    margin-right: 50px;
+  
+  }
+  .homepage-button3{
+    position: relative;
+    top: -60px; 
+    left: 210px;
+    width: 150px;
+    height: 60px;
+    font-size: 25px;
+    background: #209cff;
+    margin-right: 50px;
+  }
+  .homepage-button4{
+    position: relative;
+    top: -60px; 
+    left: 210px;
+    width: 200px;
+    height: 60px;
+    font-size: 25px;
+    background: #209cff;
+    margin-right: 50px;
+  
+  }
+  .homepage-button5{
+    position: relative;
+    top: -60px; 
+    left: 210px;
+    width: 150px;
+    height: 60px;
+    font-size: 25px;
+    background: #209cff;
+    
+  
+  }
+  .yazi{
+    position: relative;
+    top: -140px; 
+    left: 130px;
+    font-size: 35px;
+  }
+  .language-buttons{
+    position: relative;
+    background: #209cff;
+  height: 150px;
+  }
+  
+  
+  
+  .hidden {
+    display: none;
+  }
+  
+  .header {
+    width: 100%;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(161, 220, 236);
+  }
+  
+  .nav-top-left {
+    display: flex;
+    font-style: italic;
+  }
+  
+  .logo img {
+    width: 75px;
+  }
+  
+  .nav-links {
+    list-style: none;
+  }
+  
+  .nav-links li {
+    display: inline;
+    margin-right: 100px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .language-selector img {
+    width: 24px;
+    margin-left: 10px;
+  }
+  .informationnn{
+   width: 100%;
+  }
+  
+  .information-img{
+    width: 100%;
+    height: 100%;
+        
+  }
+  .paragraf{
+   
+    
+    text-align: center ;
+    font-size: 25px;
+    
+  }
+
+  .reis{
+    display: flex;
+  }
+  .resim-container {
+    position: relative;
+      top: 200px;
+      left: 100px;
+     height: 500px;
+    margin-right: 275px; 
+    display: inline-block ;
+    flex-direction: row;
+    
+
+    
+  }
+
+  .resim {
+    width: 200px; /* Resim genişliği */
+    height: 150px;
+    margin-bottom: 10px; }
+    .tablo{
+        height: 500px;
+        width: 100%;
+        
+
+        
+        
+        
+    }
+    .alt-taraf{
+        width: 100%;
+    }
+    .üclü{
+        width: 100%;
+    }
+    .baslik{
+        text-align: left;
+        margin-left: 20px;
+        font-size: 40px;
+        
+    }
+    .th, td {
+        
+        text-align: center;
+        padding: 8px;
+        width: 100px; /* Hücre genişliği sabitlenmiştir */
+        height: 500px; /* Hücre yüksekliği sabitlenmiştir */
+        max-width: 150px; /* Hücre genişliği maksimum 150px olacaktır */
+        overflow: hidden; /* İçeriğin taşmasını önleme */
+      }
+      .alt-metin{
+       background-color: #209cff;
+       width: 100%;
+       height: 500px;
+       font-size: 80px;
+       display: flex;
+      align-items: center;
+      justify-content: center;
+        
+      }
+      .resim3-container {
+        display: flex;
+        align-items: center;
+        font-size: 27px;
+        margin-bottom: 1px;
+      }
+      .resim-container3{
+        width: 100px;
+        
+        
+      margin-right: 275px; 
+      display: inline-block ;
+      flex-direction: row;
+      }
+      .metin3{
+        width: 50px;
+        height: 300px;
+      }
+     
+  
