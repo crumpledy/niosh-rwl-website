@@ -36,7 +36,7 @@ const liftTable = [
     { F: "15", "≤ 1 Hour": { "<75cm": 0.00, ">=75cm": 0.28 }, ">1 but ≤ 2 Hours": { "<75cm": 0.00, ">=75cm": 0.00 }, ">2 but ≤ 8 Hours": { "<75cm": 0.00, ">=75cm": 0.00 } },
     { F: ">15", "≤ 1 Hour": { "<75cm": 0.00, ">=75cm": 0.00 }, ">1 but ≤ 2 Hours": { "<75cm": 0.00, ">=75cm": 0.00 }, ">2 but ≤ 8 Hours": { "<75cm": 0.00, ">=75cm": 0.00 } }
 ];
-  
+
 const couplingTable = [
     { F: "Good", "<75cm": 1.00, ">=75cm": 1.00 },
     { F: "Fair", "<75cm": 0.95, ">=75cm": 1.00 },
@@ -67,7 +67,7 @@ var onPrintHeader = document.getElementById("on-print-header");
 var onPrintFooter = document.getElementById("on-print-footer");
 var onPrintFooterBar = document.getElementById("footer-bar");
 
-for(var i = 0; i < couplingOptions.length; i++) {
+for (var i = 0; i < couplingOptions.length; i++) {
     var opt = couplingOptions[i];
     var el = document.createElement("option");
     el.textContent = opt;
@@ -75,7 +75,7 @@ for(var i = 0; i < couplingOptions.length; i++) {
     selectCoupling.appendChild(el);
 }
 
-for(var i = 0; i < frequencyOptions.length; i++) {
+for (var i = 0; i < frequencyOptions.length; i++) {
     var opt = frequencyOptions[i];
     var el = document.createElement("option");
     el.textContent = opt;
@@ -83,7 +83,7 @@ for(var i = 0; i < frequencyOptions.length; i++) {
     selectFrequency.appendChild(el);
 }
 
-for(var i = 0; i < durationOptions.length; i++) {
+for (var i = 0; i < durationOptions.length; i++) {
     var opt = durationOptions[i];
     var el = document.createElement("option");
     el.textContent = opt;
@@ -105,6 +105,15 @@ function clearInputs() {
     selectFrequency.selectedIndex = 0;
     selectDuration.selectedIndex = 0;
     loadWeight.value = null;
+
+    horizontalLocation.style.border = "";
+    verticalLocation.style.border = "";
+    distance.style.border = "";
+    angleOfAsymmetry.style.border = "";
+    selectCoupling.style.border = "";
+    selectFrequency.style.border = "";
+    selectDuration.style.border = "";
+    loadWeight.style.border = "";
 }
 
 function calculate() {
@@ -126,7 +135,7 @@ function calculate() {
 function isUsMeasurement(value) {
     var isUsMeasurement = false
 
-    if(unitOfMeasurement.value != "metric") {
+    if (unitOfMeasurement.value != "metric") {
         return value * 2.54
     }
 
@@ -139,7 +148,7 @@ function calculateHm() {
     } else if (isUsMeasurement(horizontalLocation.value) >= 63) {
         hmOutput.innerText = 0;
     } else {
-        hmOutput.innerText = 25/isUsMeasurement(horizontalLocation.value);
+        hmOutput.innerText = 25 / isUsMeasurement(horizontalLocation.value);
     }
 }
 
@@ -149,7 +158,7 @@ function calculateVm() {
     } else if (isUsMeasurement(verticalLocation.value) >= 175) {
         vmOutput.innerText = 0;
     } else {
-        vmOutput.innerText = 1-(0.003*Math.abs(isUsMeasurement(verticalLocation.value) - 75));
+        vmOutput.innerText = 1 - (0.003 * Math.abs(isUsMeasurement(verticalLocation.value) - 75));
     }
 }
 
@@ -159,7 +168,7 @@ function calculateDm() {
     } else if (isUsMeasurement(distance.value) >= 175) {
         dmOutput.innerText = 0;
     } else {
-        dmOutput.innerText = 0.85 * (4.5/isUsMeasurement(distance.value));
+        dmOutput.innerText = 0.85 * (4.5 / isUsMeasurement(distance.value));
     }
 }
 
@@ -169,7 +178,7 @@ function calculateAm() {
     } else if (isUsMeasurement(angleOfAsymmetry.value) >= 135) {
         amOutput.innerText = 0;
     } else {
-        amOutput.innerText = 1-(0.0032*isUsMeasurement(angleOfAsymmetry.value));
+        amOutput.innerText = 1 - (0.0032 * isUsMeasurement(angleOfAsymmetry.value));
     }
 }
 
@@ -183,33 +192,33 @@ function getTableValue(frequency, workDuration, verticalHeight) {
     const row = liftTable.find(row => row.F == frequency);
 
     if (!row) {
-      return null;
+        return null;
     }
 
     const durationData = row[workDuration];
     if (!durationData) {
-      return null;
+        return null;
     }
-    
+
     if (verticalHeight < 75) {
         calculatedVerticalHeigt = "<75cm";
     } else {
         calculatedVerticalHeigt = ">=75cm";
     }
-  
+
     const heightValue = durationData[calculatedVerticalHeigt];
     if (heightValue === undefined) {
-      return null;
+        return null;
     }
 
     return heightValue;
-  }
+}
 
-  function calculateCm() {
+function calculateCm() {
     cmOutput.innerText = getCmValueTable(selectCoupling.value, verticalLocation.value);
-  }
+}
 
-  function getCmValueTable(coupling, verticalHeight) {
+function getCmValueTable(coupling, verticalHeight) {
     var calculatedVerticalHeight = null
     const row = couplingTable.find(row => row.F == coupling);
 
@@ -226,49 +235,63 @@ function getTableValue(frequency, workDuration, verticalHeight) {
     const result = row[calculatedVerticalHeight];
 
     return result;
-  }
+}
 
-  function calculateRwl() {
-    rwlOutput.innerText = 23*parseFloat(hmOutput.innerText)*parseFloat(vmOutput.innerText)*parseFloat(dmOutput.innerText)*parseFloat(amOutput.innerText)*parseFloat(fmOutput.innerText)*parseFloat(cmOutput.innerText);
-  }
+function calculateRwl() {
+    rwlOutput.innerText = 23 * parseFloat(hmOutput.innerText) * parseFloat(vmOutput.innerText) * parseFloat(dmOutput.innerText) * parseFloat(amOutput.innerText) * parseFloat(fmOutput.innerText) * parseFloat(cmOutput.innerText);
+}
 
-  function calculateLi() {
-    liOutput.innerText = parseFloat(loadWeight.value)/parseFloat(rwlOutput.innerText);
-  }
+function calculateLi() {
+    liOutput.innerText = parseFloat(loadWeight.value) / parseFloat(rwlOutput.innerText);
+}
 
 function checkValues() {
-    if (horizontalLocation == null) {
-
+    if (horizontalLocation.value == "" || (isNaN(horizontalLocation.value))) {
+        horizontalLocation.style.border = "2px solid red";
+    } else {
+        horizontalLocation.style.border = "";
     }
-    if (verticalLocation == null) {
 
+    if (verticalLocation.value == "" || (isNaN(verticalLocation.value))) {
+        verticalLocation.style.border = "2px solid red";
+    } else {
+        verticalLocation.style.border = "";
     }
-    if (distance == null) {
 
+    if (distance.value == "" || (isNaN(distance.value))) {
+        distance.style.border = "2px solid red";
+    } else {
+        distance.style.border = "";
     }
-    if (angleOfAsymmetry == null) {
 
+    if (angleOfAsymmetry.value == "" || (isNaN(angleOfAsymmetry.value))) {
+        angleOfAsymmetry.style.border = "2px solid red";
+    } else {
+        angleOfAsymmetry.style.border = "";
     }
-    if (selectCoupling == null) {
-
+    
+    if (selectCoupling.selectedIndex == 0 || (isNaN(selectCoupling.selectedIndex))) {
+        selectCoupling.style.border = "2px solid red";
+    } else {
+        selectCoupling.style.border = "";
     }
-    if (selectFrequency == null) {
-
+    
+    if (selectFrequency.selectedIndex == 0 || (isNaN(selectFrequency.selectedIndex))) {
+        selectFrequency.style.border = "2px solid red";
+    } else {
+        selectFrequency.style.border = "";
     }
-    if (selectDuration == null) {
-
+    
+    if (selectDuration.selectedIndex == 0|| (isNaN(selectDuration.selectedIndex))) {
+        selectDuration.style.border = "2px solid red";
+    } else {
+        selectDuration.style.border = "";
     }
-    if (loadWeight == null) {
-
-    }
-    if (couplingOptions == null) {
-
-    }
-    if (frequencyOptions == null) {
-
-    }
-    if (durationOptions == null) {
-
+    
+    if (loadWeight.value == "" || (isNaN(loadWeight.value))) {
+        loadWeight.style.border = "2px solid red";
+    } else {
+        loadWeight.style.border = "";
     }
 }
 
@@ -478,7 +501,7 @@ function updateLanguage(language) {
     document.getElementById('AsymmetryMultiplier').textContent = languages[language].AsymmetryMultiplier;
     document.getElementById('FrequencyMultiplier').textContent = languages[language].FrequencyMultiplier;
     document.getElementById('CouplingMultiplier').textContent = languages[language].CouplingMultiplier;
-    
+
     document.getElementById('PrivacyPolicy').textContent = languages[language].PrivacyPolicy;
     document.getElementById('GiveFeedback').textContent = languages[language].GiveFeedback;
     document.getElementById('AboutusUppercase').textContent = languages[language].AboutusUppercase;
@@ -488,7 +511,7 @@ function updateLanguage(language) {
     document.getElementById('WhatIsNioshFooter').textContent = languages[language].WhatIsNioshFooter;
     document.getElementById('FAQ').textContent = languages[language].FAQ;
     document.getElementById('CalculatorTitleFooter').textContent = languages[language].CalculatorTitleFooter;
-    
+
 
     //2 CONDITION TEXT
     /*
@@ -504,11 +527,11 @@ function updateLanguage(language) {
     generateSuggestions()
 }
 
-document.getElementById('btn-en').addEventListener('click', function() {
+document.getElementById('btn-en').addEventListener('click', function () {
     updateLanguage('en');
 });
 
-document.getElementById('btn-tr').addEventListener('click', function() {
+document.getElementById('btn-tr').addEventListener('click', function () {
     updateLanguage('tr');
 });
 
