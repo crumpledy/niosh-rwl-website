@@ -186,9 +186,9 @@
       <div class="linker-links">
         <a href="mailto:info@ergo.com">info@ergo.com</a>
         <div class="social-icons">
-          <a href="#"><img src="../images/facebook-circle.svg" alt="Facebook linker" id="svgImageFacebook"></a>
-          <a href="#"><img src="../images/youtube-circle.svg" alt="YouTube linker" id="svgImageYoutube"></a>
-          <a href="#"><img src="../images/twitter-circle.svg" alt="Twitter linker" id="svgImageTwitter"></a>
+          <a href="#"><img src="../images/facebook-circle.png" alt="Facebook linker" id="svgImageFacebook"></a>
+          <a href="#"><img src="../images/youtube-circle.png" alt="YouTube linker" id="svgImageYoutube"></a>
+          <a href="#"><img src="../images/twitter-circle.png" alt="Twitter linker" id="svgImageTwitter"></a>
         </div>
       </div>
     </div>
@@ -210,9 +210,9 @@
     <div class="on-print-footer-info", id="on-print-footer-info">
         <a href="mailto:info@ergo.com">info@ergo.com</a>
       <div class="social-icons">
-        <a href="#"><img src="../images/facebook-circle.svg" alt="Facebook linker" id="svgImageFacebook"></a>
-        <a href="#"><img src="../images/youtube-circle.svg" alt="YouTube linker" id="svgImageYoutube"></a>
-        <a href="#"><img src="../images/twitter-circle.svg" alt="Twitter linker" id="svgImageTwitter"></a>
+        <a href="#"><img src="../images/facebook-circle.png" alt="Facebook linker" id="svgImageFacebook"></a>
+        <a href="#"><img src="../images/youtube-circle.png" alt="YouTube linker" id="svgImageYoutube"></a>
+        <a href="#"><img src="../images/twitter-circle.png" alt="Twitter linker" id="svgImageTwitter"></a>
       </div>
     </div>
     </div>
@@ -228,7 +228,15 @@ async function didTapSaveButton() {
   removePrintingEffect()
 }
 function downloadPDF() {
-  html2pdf().from(document.body).save('NIOSH-Report.pdf');
+  var opt = {
+  margin:       0,
+  filename:     'NIOSH-Report.pdf',
+  image:        { type: 'jpeg', quality: 0.98 },
+  html2canvas:  { scale: 1, useCORS: true, logging: true },
+  jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+};
+
+  html2pdf().set(opt).from(document.body).save('NIOSH-Report.pdf');
 }
 </script>
 
