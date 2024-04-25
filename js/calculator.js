@@ -118,7 +118,7 @@ function clearInputs() {
 
 function calculate() {
     checkValues()
-
+    
     calculateHm()
     calculateVm()
     calculateDm()
@@ -130,6 +130,7 @@ function calculate() {
 
     generateSuggestions()
     showOutputTable()
+    
 }
 
 function isUsMeasurement(value) {
@@ -141,49 +142,176 @@ function isUsMeasurement(value) {
 
     return value
 }
-
+var hmSuggestionCell = document.getElementById("hm-suggestion"); // hm-suggestion ID'sine sahip hücreyi seç
 function calculateHm() {
     if (isUsMeasurement(horizontalLocation.value) <= 25) {
         hmOutput.innerText = 1;
+        hmSuggestionCell.innerText = "";
     } else if (isUsMeasurement(horizontalLocation.value) >= 63) {
-        hmOutput.innerText = 0;
+        hmOutput.innerText = 0; 
+        hmSuggestionCell.innerText = "Your horizontal distance is greater than acceptable level. You should reduce your horizontal distance and bring it closer to the ideal value of 25 cm.";
+
     } else {
-        hmOutput.innerText = 25 / isUsMeasurement(horizontalLocation.value);
+        hmOutput.innerText = 25/isUsMeasurement(horizontalLocation.value);
+        hmSuggestionCell.innerText = "You should reduce your horizontal distance and bring it closer to the ideal value of 25 cm.";
     }
 }
-
+var vmSuggestionCell = document.getElementById("vm-suggestion"); 
 function calculateVm() {
     if (isUsMeasurement(verticalLocation.value) <= 75) {
         vmOutput.innerText = 1;
+        vmSuggestionCell.innerText = " You should increase the lifting height to bring it closer to the ideal value of 75."; 
     } else if (isUsMeasurement(verticalLocation.value) >= 175) {
         vmOutput.innerText = 0;
+        vmSuggestionCell.innerText = "Your vertical distance is greater than acceptable level, you should reduce the lifting height and bring it closer to the ideal value of 75."
     } else {
-        vmOutput.innerText = 1 - (0.003 * Math.abs(isUsMeasurement(verticalLocation.value) - 75));
+        vmOutput.innerText = 1-(0.003*Math.abs(isUsMeasurement(verticalLocation.value) - 75));
+        vmSuggestionCell.innerText = " You should reduce the lifting height and bring it closer to the ideal value of 75."
     }
 }
-
+var dmSuggestionCell = document.getElementById("dm-suggestion");
 function calculateDm() {
     if (isUsMeasurement(distance.value) <= 25) {
         dmOutput.innerText = 1;
+        dmSuggestionCell.innerText = ""
     } else if (isUsMeasurement(distance.value) >= 175) {
         dmOutput.innerText = 0;
+        dmSuggestionCell.innerText ="You should reduce the distance value and bring it closer to the ideal value of 25." 
     } else {
-        dmOutput.innerText = 0.85 * (4.5 / isUsMeasurement(distance.value));
+        dmOutput.innerText = 0.85 * (4.5/isUsMeasurement(distance.value));
+        dmSuggestionCell.innerText = "You should reduce your distance value, bringing it closer to the ideal 25."
     }
 }
-
+var amSuggestionCell = document.getElementById("am-suggestion");
 function calculateAm() {
     if (isUsMeasurement(angleOfAsymmetry.value) <= 0) {
         amOutput.innerText = 1;
+        amSuggestionCell.innerText = ""
     } else if (isUsMeasurement(angleOfAsymmetry.value) >= 135) {
         amOutput.innerText = 0;
+        amSuggestionCell.innerText = "Your asymmetry factor is greater than acceptable level. You should reduce your lift angle and bring it closer to the ideal 0.S"
     } else {
-        amOutput.innerText = 1 - (0.0032 * isUsMeasurement(angleOfAsymmetry.value));
+        amOutput.innerText = 1-(0.0032*isUsMeasurement(angleOfAsymmetry.value));
+        amSuggestionCell.innerText = "You should reduce your lift angle and bring it closer to the ideal 0."
     }
 }
-
+var fmSuggestionCell = document.getElementById("fm-suggestion");
 function calculateFm() {
     fmOutput.innerText = getTableValue(selectFrequency.value, selectDuration.value, isUsMeasurement(verticalLocation.value));
+    if((isUsMeasurement(verticalLocation.value)>=75) && selectDuration.value === durationOptions[1]) {
+
+        if(selectFrequency.value===frequencyOptions[1]){
+            fmSuggestionCell.innerText = "You don't need to change anything."
+        }else{
+            fmSuggestionCell.innerText=  "You should reduce your lifting frequency."
+        }
+
+    
+    }
+    if((isUsMeasurement(verticalLocation.value)<75) && selectDuration.value === durationOptions[1]) {
+
+        if(selectFrequency.value===frequencyOptions[1]){
+            fmSuggestionCell.innerText = "You don't need to change anything."
+        }
+        else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
+            fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 13 lifts per minute OR you should make the vertical value ideally 75 cm." 
+
+        }
+        else if(selectFrequency.value===frequencyOptions[18]){
+            fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 13 lifts per minute."
+        }
+        else{
+            fmSuggestionCell.innerText=  "You should reduce your lifting frequency."
+        }
+
+    
+    }
+
+    if((isUsMeasurement(verticalLocation.value)<75) && selectDuration.value === durationOptions[2]) {
+
+        if(selectFrequency.value===frequencyOptions[1]){
+            fmSuggestionCell.innerText = "You should reduce your work durations."
+        }
+        else if(selectFrequency.value===frequencyOptions[13]||selectFrequency.value===frequencyOptions[14]){
+            fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 11 lifts per minute OR you should make the vertical value equal to or greater than the ideal 75 cm."
+        }
+        else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
+            fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 11 lifts per minute OR you should make the vertical value ideally 75 cm." 
+
+        }
+        else if(selectFrequency.value===frequencyOptions[18]){
+            fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 11 lifts per minute."
+        }
+        else{
+            fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
+        }
+
+    
+    }
+    if((isUsMeasurement(verticalLocation.value)>=75) && selectDuration.value === durationOptions[2]) {
+
+        if(selectFrequency.value===frequencyOptions[1]){
+            fmSuggestionCell.innerText = "You should reduce your work durations."
+        }
+        else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
+            fmSuggestionCell.innerText = "You should reduce your work duration OR you should reduce the frequency of lifting to less than 13 lifts per minute." 
+
+        }
+        else if(selectFrequency.value===frequencyOptions[18]){
+            fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 13 lifts per minute."
+        }
+        else{
+            fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
+        }
+
+    
+    }
+    if((isUsMeasurement(verticalLocation.value)<75) && selectDuration.value === durationOptions[3]) {
+
+        if(selectFrequency.value===frequencyOptions[1]){
+            fmSuggestionCell.innerText = "You should reduce your work durations."
+        }
+        else if(selectFrequency.value===frequencyOptions[11]||selectFrequency.value===frequencyOptions[12]){
+            fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 9 lifts per minute OR you should reduce your work duration AND you should make the vertical value equal to or greater than the ideal 75 cm."
+        }
+        else if(selectFrequency.value===frequencyOptions[13]||selectFrequency.value===frequencyOptions[14]){
+            fmSuggestionCell.innerText ="You should reduce your work duration OR you should reduce the frequency of lifting to less than 9 lifts per minute AND you should make the vertical value equal to or greater than the ideal 75 cm."
+        }
+        else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
+            fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 9 lifts per minute OR you should bring the vertical value closer to the ideal 75 cm and you should make your study periods equal to or shorter than 1 hour." 
+
+        }
+        else if(selectFrequency.value===frequencyOptions[18]){
+            fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 9 lifts per minute."
+        }
+        else{
+            fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
+        }
+
+    
+    }
+    if((isUsMeasurement(verticalLocation.value)>=75) && selectDuration.value === durationOptions[3]) {
+
+        if(selectFrequency.value===frequencyOptions[1]){
+            fmSuggestionCell.innerText = "You should reduce your work durations."
+        }
+        else if(selectFrequency.value===frequencyOptions[13]||selectFrequency.value===frequencyOptions[14]){
+            fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 11 lifts per minute, you should reduce your work duration."
+        }
+        else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
+            fmSuggestionCell.innerText = "You should make your study periods equal to or shorter than 1 hour OR you should reduce the frequency of lifting to less than 11 lifts per minute." 
+
+        }
+        else if(selectFrequency.value===frequencyOptions[18]){
+            fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 9 lifts per minute."
+        }
+        else{
+            fmSuggestionCell.innerText=  "You should reduce the frequency of lifting to less than 11 lifts per minute."
+        }
+
+    
+    }
+   
 }
 
 function getTableValue(frequency, workDuration, verticalHeight) {
@@ -212,10 +340,19 @@ function getTableValue(frequency, workDuration, verticalHeight) {
     }
 
     return heightValue;
-}
-
-function calculateCm() {
+  }
+  var cmSuggestionCell = document.getElementById("cm-suggestion");
+  function calculateCm() {
     cmOutput.innerText = getCmValueTable(selectCoupling.value, verticalLocation.value);
+    
+    if (cmOutput.innerText == 1) {
+        cmSuggestionCell.innerText = " "
+    } else if(cmOutput.innerText == 0.90) {
+        cmSuggestionCell.innerText = "You should improve the coupling type"
+    }
+    else{
+        cmSuggestionCell.innerText = "You should improve the coupling type OR you should make the vertical value equal to or greater than the ideal 75 cm."
+    }
 }
 
 function getCmValueTable(coupling, verticalHeight) {
@@ -538,3 +675,6 @@ document.getElementById('btn-tr').addEventListener('click', function () {
 function generateSuggestions() {
 
 }
+
+
+

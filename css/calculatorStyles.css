@@ -72,6 +72,8 @@ body {
      border: none;
      width: 24px;
      height: 16px;
+     display: flexbox;
+      margin: 2px;
 }
 
 .language-selector {
