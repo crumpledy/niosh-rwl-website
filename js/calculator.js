@@ -152,7 +152,7 @@ function calculateHm() {
         hmSuggestionCell.innerText = "Your horizontal distance is greater than acceptable level. You should reduce your horizontal distance and bring it closer to the ideal value of 25 cm.";
 
     } else {
-        hmOutput.innerText = 25/isUsMeasurement(horizontalLocation.value);
+        hmOutput.innerText = (25/isUsMeasurement(horizontalLocation.value)).toFixed(2);
         hmSuggestionCell.innerText = "You should reduce your horizontal distance and bring it closer to the ideal value of 25 cm.";
     }
 }
@@ -165,7 +165,7 @@ function calculateVm() {
         vmOutput.innerText = 0;
         vmSuggestionCell.innerText = "Your vertical distance is greater than acceptable level, you should reduce the lifting height and bring it closer to the ideal value of 75."
     } else {
-        vmOutput.innerText = 1-(0.003*Math.abs(isUsMeasurement(verticalLocation.value) - 75));
+        vmOutput.innerText = (1-(0.003*Math.abs(isUsMeasurement(verticalLocation.value) - 75))).toFixed(2);
         vmSuggestionCell.innerText = " You should reduce the lifting height and bring it closer to the ideal value of 75."
     }
 }
@@ -178,7 +178,7 @@ function calculateDm() {
         dmOutput.innerText = 0;
         dmSuggestionCell.innerText ="You should reduce the distance value and bring it closer to the ideal value of 25." 
     } else {
-        dmOutput.innerText = 0.82 * (4.5/isUsMeasurement(distance.value));
+        dmOutput.innerText = (0.82 + (4.5/isUsMeasurement(distance.value))).toFixed(2);
         dmSuggestionCell.innerText = "You should reduce your distance value, bringing it closer to the ideal 25."
     }
 }
@@ -191,7 +191,7 @@ function calculateAm() {
         amOutput.innerText = 0;
         amSuggestionCell.innerText = "Your asymmetry factor is greater than acceptable level. You should reduce your lift angle and bring it closer to the ideal 0.S"
     } else {
-        amOutput.innerText = 1-(0.0032*isUsMeasurement(angleOfAsymmetry.value));
+        amOutput.innerText = (1-(0.0032*isUsMeasurement(angleOfAsymmetry.value))).toFixed(2);
         amSuggestionCell.innerText = "You should reduce your lift angle and bring it closer to the ideal 0."
     }
 }
@@ -375,11 +375,11 @@ function getCmValueTable(coupling, verticalHeight) {
 }
 
 function calculateRwl() {
-    rwlOutput.innerText = 23 * parseFloat(hmOutput.innerText) * parseFloat(vmOutput.innerText) * parseFloat(dmOutput.innerText) * parseFloat(amOutput.innerText) * parseFloat(fmOutput.innerText) * parseFloat(cmOutput.innerText);
+    rwlOutput.innerText = (23 * parseFloat(hmOutput.innerText) * parseFloat(vmOutput.innerText) * parseFloat(dmOutput.innerText) * parseFloat(amOutput.innerText) * parseFloat(fmOutput.innerText) * parseFloat(cmOutput.innerText)).toFixed(2);
 }
 
 function calculateLi() {
-    liOutput.innerText = parseFloat(loadWeight.value) / parseFloat(rwlOutput.innerText);
+    liOutput.innerText = (parseFloat(loadWeight.value) / parseFloat(rwlOutput.innerText)).toFixed(2);
 }
 
 function checkValues() {
