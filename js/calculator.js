@@ -158,7 +158,7 @@ function calculateHm() {
 }
 var vmSuggestionCell = document.getElementById("vm-suggestion"); 
 function calculateVm() {
-    if (isUsMeasurement(verticalLocation.value) <= 75) {
+    if (isUsMeasurement(verticalLocation.value) == 75) {
         vmOutput.innerText = 1;
         vmSuggestionCell.innerText = " You should increase the lifting height to bring it closer to the ideal value of 75."; 
     } else if (isUsMeasurement(verticalLocation.value) >= 175) {
@@ -178,7 +178,7 @@ function calculateDm() {
         dmOutput.innerText = 0;
         dmSuggestionCell.innerText ="You should reduce the distance value and bring it closer to the ideal value of 25." 
     } else {
-        dmOutput.innerText = 0.85 * (4.5/isUsMeasurement(distance.value));
+        dmOutput.innerText = 0.82 * (4.5/isUsMeasurement(distance.value));
         dmSuggestionCell.innerText = "You should reduce your distance value, bringing it closer to the ideal 25."
     }
 }
