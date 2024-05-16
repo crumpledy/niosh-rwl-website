@@ -4,6 +4,10 @@
           print-color-adjust: exact;
           -webkit-print-color-adjust: exact;
      }
+
+     #output-table {
+          page-break-before: always;
+     }
 }
 
 button {
