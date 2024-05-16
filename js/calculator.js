@@ -150,22 +150,25 @@ function calculateHm() {
     } else if (isUsMeasurement(horizontalLocation.value) >= 63) {
         hmOutput.innerText = 0; 
         hmSuggestionCell.innerText = "Your horizontal distance is greater than acceptable level. You should reduce your horizontal distance and bring it closer to the ideal value of 25 cm.";
-
+        hmSuggestionCell.style.color = "red";
     } else {
         hmOutput.innerText = (25/isUsMeasurement(horizontalLocation.value)).toFixed(3);
         hmSuggestionCell.innerText = "You should reduce your horizontal distance and bring it closer to the ideal value of 25 cm.";
+        hmSuggestionCell.style.color = "black";
     }
 }
 var vmSuggestionCell = document.getElementById("vm-suggestion"); 
 function calculateVm() {
     if (isUsMeasurement(verticalLocation.value) == 75) {
         vmOutput.innerText = 1;
-        vmSuggestionCell.innerText = " You should increase the lifting height to bring it closer to the ideal value of 75."; 
+        vmSuggestionCell.innerText = ""; 
     } else if (isUsMeasurement(verticalLocation.value) >= 175) {
         vmOutput.innerText = 0;
+        vmSuggestionCell.style.color = "red";
         vmSuggestionCell.innerText = "Your vertical distance is greater than acceptable level, you should reduce the lifting height and bring it closer to the ideal value of 75."
     } else {
         vmOutput.innerText = (1-(0.003*Math.abs(isUsMeasurement(verticalLocation.value) - 75))).toFixed(3);
+        vmSuggestionCell.style.color = "black";
         vmSuggestionCell.innerText = " You should reduce the lifting height and bring it closer to the ideal value of 75."
     }
 }
@@ -176,9 +179,11 @@ function calculateDm() {
         dmSuggestionCell.innerText = ""
     } else if (isUsMeasurement(distance.value) >= 175) {
         dmOutput.innerText = 0;
+        dmSuggestionCell.style.color = "red";
         dmSuggestionCell.innerText ="You should reduce the distance value and bring it closer to the ideal value of 25." 
     } else {
         dmOutput.innerText = (0.82 + (4.5/isUsMeasurement(distance.value))).toFixed(3);
+        dmSuggestionCell.style.color = "black";
         dmSuggestionCell.innerText = "You should reduce your distance value, bringing it closer to the ideal 25."
     }
 }
@@ -189,9 +194,11 @@ function calculateAm() {
         amSuggestionCell.innerText = ""
     } else if (isUsMeasurement(angleOfAsymmetry.value) >= 135) {
         amOutput.innerText = 0;
+        amSuggestionCell.style.color = "red";
         amSuggestionCell.innerText = "Your asymmetry factor is greater than acceptable level. You should reduce your lift angle and bring it closer to the ideal 0.S"
     } else {
         amOutput.innerText = (1-(0.0032*isUsMeasurement(angleOfAsymmetry.value))).toFixed(3);
+        amSuggestionCell.style.color = "black";
         amSuggestionCell.innerText = "You should reduce your lift angle and bring it closer to the ideal 0."
     }
 }
@@ -202,8 +209,14 @@ function calculateFm() {
 
         if(selectFrequency.value===frequencyOptions[1]){
             fmSuggestionCell.innerText = "You don't need to change anything."
-        }else{
+            fmSuggestionCell.style.color = "black";
+        }else if(selectFrequency.value===frequencyOptions[18]){
             fmSuggestionCell.innerText=  "You should reduce your lifting frequency."
+            fmSuggestionCell.style.color = "red";
+        }
+        else{
+            fmSuggestionCell.innerText=  "You should reduce your lifting frequency."
+            fmSuggestionCell.style.color = "black";
         }
 
     
@@ -212,15 +225,19 @@ function calculateFm() {
 
         if(selectFrequency.value===frequencyOptions[1]){
             fmSuggestionCell.innerText = "You don't need to change anything."
+            fmSuggestionCell.style.color = "black";
         }
         else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
             fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 13 lifts per minute OR you should make the vertical value ideally 75 cm." 
-
+            fmSuggestionCell.style.color = "red";
         }
         else if(selectFrequency.value===frequencyOptions[18]){
+            fmSuggestionCell.style.color = "red";
+            
             fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 13 lifts per minute."
         }
         else{
+            fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText=  "You should reduce your lifting frequency."
         }
 
@@ -230,19 +247,24 @@ function calculateFm() {
     if((isUsMeasurement(verticalLocation.value)<75) && selectDuration.value === durationOptions[2]) {
 
         if(selectFrequency.value===frequencyOptions[1]){
+            fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText = "You should reduce your work durations."
         }
         else if(selectFrequency.value===frequencyOptions[13]||selectFrequency.value===frequencyOptions[14]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 11 lifts per minute OR you should make the vertical value equal to or greater than the ideal 75 cm."
         }
         else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 11 lifts per minute OR you should make the vertical value ideally 75 cm." 
 
         }
         else if(selectFrequency.value===frequencyOptions[18]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 11 lifts per minute."
         }
         else{
+            fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
         }
 
@@ -251,16 +273,20 @@ function calculateFm() {
     if((isUsMeasurement(verticalLocation.value)>=75) && selectDuration.value === durationOptions[2]) {
 
         if(selectFrequency.value===frequencyOptions[1]){
+            fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText = "You should reduce your work durations."
         }
         else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText = "You should reduce your work duration OR you should reduce the frequency of lifting to less than 13 lifts per minute." 
 
         }
         else if(selectFrequency.value===frequencyOptions[18]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 13 lifts per minute."
         }
         else{
+            fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
         }
 
@@ -270,21 +296,27 @@ function calculateFm() {
 
         if(selectFrequency.value===frequencyOptions[1]){
             fmSuggestionCell.innerText = "You should reduce your work durations."
+            fmSuggestionCell.style.color = "black";
         }
         else if(selectFrequency.value===frequencyOptions[11]||selectFrequency.value===frequencyOptions[12]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 9 lifts per minute OR you should reduce your work duration AND you should make the vertical value equal to or greater than the ideal 75 cm."
         }
         else if(selectFrequency.value===frequencyOptions[13]||selectFrequency.value===frequencyOptions[14]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText ="You should reduce your work duration OR you should reduce the frequency of lifting to less than 9 lifts per minute AND you should make the vertical value equal to or greater than the ideal 75 cm."
         }
         else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 9 lifts per minute OR you should bring the vertical value closer to the ideal 75 cm and you should make your study periods equal to or shorter than 1 hour." 
 
         }
         else if(selectFrequency.value===frequencyOptions[18]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 9 lifts per minute."
         }
         else{
+            fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
         }
 
@@ -293,19 +325,24 @@ function calculateFm() {
     if((isUsMeasurement(verticalLocation.value)>=75) && selectDuration.value === durationOptions[3]) {
 
         if(selectFrequency.value===frequencyOptions[1]){
+            fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText = "You should reduce your work durations."
         }
         else if(selectFrequency.value===frequencyOptions[13]||selectFrequency.value===frequencyOptions[14]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 11 lifts per minute, you should reduce your work duration."
         }
         else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText = "You should make your study periods equal to or shorter than 1 hour OR you should reduce the frequency of lifting to less than 11 lifts per minute." 
 
         }
         else if(selectFrequency.value===frequencyOptions[18]){
+            fmSuggestionCell.style.color = "red";
             fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 9 lifts per minute."
         }
         else{
+            fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText=  "You should reduce the frequency of lifting to less than 11 lifts per minute."
         }
 
@@ -446,29 +483,17 @@ function hideOutputTable() {
 
 function prepareForSave() {
     prepareForPrint()
-    updateLanguage(currentLanguage)
 }
 
 function didTapPrintButton() {
     prepareForPrint()
-    updateLanguage(currentLanguage)
     printPage()
     removePrintingEffect()
 }
 
 function prepareForPrint() {
-    CalculatorTitle.innerText = "NIOSH LIFTING Report";
     actionButtons.style.display = "none";
-    navButtons.style.display = "none";
-    langButtons.style.display = "none";
-    footerContainer.style.display = "none";
-
-    onPrintHeader.style.display = "block";
-    onPrintFooter.style.display = "flex";
-
-    onPrintFooter.style.justifyContent; "space-between";
     onPrintFooterBar.style.justifyContent = "space-between";
-
     inputTable.style.marginBottom = "20px";
 }
 
@@ -477,200 +502,13 @@ function printPage() {
 }
 
 function removePrintingEffect() {
-    CalculatorTitle.innerText = "NIOSH Lifting Calculator";
     actionButtons.style.display = "block";
-    navButtons.style.display = "block";
-    langButtons.style.display = "block";
-    footerContainer.style.display = "flex";
-
-    onPrintHeader.style.display = "none";
-    onPrintFooter.style.display = "none";
-
-    onPrintFooter.style.justifyContent; "flex-start";
     onPrintFooterBar.style.justifyContent = "flex-start";
 
     inputTable.style.marginBottom = "0px";
 }
 
-const languages = {
-    en: {
-        Home: "Home",
-        Aboutus: "About Us",
-        Blog: "Blog",
-        WhatIsNiosh: "What is NIOSH",
-        ContactUs: "Contact Us",
-        onPrintHeader: "\"Safer Workplaces a Healtier Future\"",
-        CalculatorTitle: "NIOSH LIFTING CALCULATOR",
-        Inputs: "INPUTS",
-        unitOfMeasurement: "Unit of Measurement",
-        HorizontalLocation: "Horizontal Location",
-        HorizontalDescription: "distance from hands to mid-point between medial malleoli measured at origin and destination",
-        VerticalLocation: "Vertical Location",
-        VerticalDescription: "distance from hands above floor measured at origin and destination",
-        Distance: "Distance",
-        DistanceDescription: "vertical travel = high - low",
-        AngleOfAsymmetry: "Angle of Asymmetry",
-        AngleDescription: "the angle between asymmetry line and sagittal line",
-        Coupling: "Coupling",
-        CouplingDescription: "How well the worker can grasp the object",
-        Frequency: "Frequency",
-        FrequencyDescription: "the number of lifts per minute",
-        Duration: "Duration",
-        DurationDescription: "the total time spent lifting over a work shift",
-        LoadWeight: "Load Weight",
-        WeightDescription: "weight of the object lifted",
-        calculate: "Calculate",
-        clear: "Clear",
-        print: "Print",
-        save: "Save",
-        Results: "RESULTS",
-        RiskLevelSuggestions: "RISK LEVEL AND SUGGESTIONS",
-        RecommendedWeightLimit: "Recommended Weight Limit (RWL)",
-        LiftingIndex: "Lifting Index (LI)",
-        HorizontalMultiplier: "Horizontal Multiplier (HM)",
-        VerticalMultiplier: "Vertical Multiplier (VM)",
-        DistanceMultiplier: "Distance Multiplier (DM)",
-        AsymmetryMultiplier: "Asymmetry Multiplier (AM)",
-        FrequencyMultiplier: "Frequency Multiplier (FM)",
-        CouplingMultiplier: "Coupling Multiplier (CM)",
-        PrivacyPolicy: "Privacy Policy",
-        GiveFeedback: "Give Feedback",
-        AboutusUppercase: "ABOUT US",
-        WhoAreWe: "Who are we",
-        ContactUsFooter: "Contact Us",
-        Help: "HELP",
-        WhatIsNioshFooter: "What is NIOSH",
-        FAQ: "FAQ",
-        CalculatorTitleFooter: "NIOSH LIFTING CALCULATOR"
-    },
-    tr: {
-        Home: "Ana Sayfa",
-        Aboutus: "Hakkımızda",
-        Blog: "Blog",
-        WhatIsNiosh: "NIOSH Nedir",
-        ContactUs: "İletişim",
-        onPrintHeader: "\"Güvenli Çalışma Alanı, Sağlıklı bir gelecek\"",
-        CalculatorTitle: "NIOSH KALDIRMA HESAPLAYICI",
-        Inputs: "GİRDİLER",
-        unitOfMeasurement: "Ölçü Birimi",
-        HorizontalLocation: "Yatay Konum",
-        HorizontalDescription: "ellerin medial malleoller arasındaki orta noktaya olan mesafesi, başlangıç ve varış noktasında ölçülür.",
-        VerticalLocation: "Dikey Konum",
-        VerticalDescription: "ellerin yerden yüksekliği, başlangıç ve varış noktasında ölçülür",
-        Distance: "Mesafe",
-        DistanceDescription: "dikey seyahat = yüksek - düşük",
-        AngleOfAsymmetry: "Asimetri Açısı",
-        AngleDescription: "asimetri çizgisi ile sagittal çizgi arasındaki açı",
-        Coupling: "Bağlantı",
-        CouplingDescription: "işçinin nesneyi ne kadar iyi kavrayabildiği",
-        Frequency: "Frekans",
-        FrequencyDescription: "dakika başına yapılan kaldırma sayısı",
-        Duration: "Süre",
-        DurationDescription: "bir iş vardiyası boyunca kaldırma üzerinde harcanan toplam süre",
-        LoadWeight: "Yük Ağırlığı",
-        WeightDescription: "kaldırılan nesnenin ağırlığı",
-        calculate: "Hesapla",
-        clear: "Temizle",
-        print: "Yazdır",
-        save: "Kaydet",
-        Results: "SONUÇLAR",
-        RiskLevelSuggestions: "RISK SEVİYESİ VE ÖNERİLER",
-        RecommendedWeightLimit: "Önerilen Ağırlık Limiti (RWL)",
-        LiftingIndex: "Kaldırma İndeksi (LI)",
-        HorizontalMultiplier: "Yatay Çarpan (HM)",
-        VerticalMultiplier: "Dikey Çarpan (VM)",
-        DistanceMultiplier: "Mesafe Çarpanı (DM)",
-        AsymmetryMultiplier: "Asimetri Çarpanı (AM)",
-        FrequencyMultiplier: "Frekans Çarpanı (FM)",
-        CouplingMultiplier: "Bağlantı Çarpanı (CM)",
-        PrivacyPolicy: "Gizlilik Politikası",
-        GiveFeedback: "Geri Dönüş Bildir",
-        AboutusUppercase: "HAKKIMIZDA",
-        WhoAreWe: "Biz Kimiz",
-        ContactUsFooter: "Bize Ulaşın",
-        Help: "YARDIM",
-        WhatIsNioshFooter: "NIOSH Nedir",
-        FAQ: "FAQ",
-        CalculatorTitleFooter: "NIOSH KALDIRMA HESAPLAYICI"
-    }
-};
 
-function updateLanguage(language) {
-    currentLanguage = language;
-
-    document.getElementById('Home').textContent = languages[language].Home;
-    document.getElementById('Aboutus').textContent = languages[language].Aboutus;
-    document.getElementById('Blog').textContent = languages[language].Blog;
-    document.getElementById('WhatIsNiosh').textContent = languages[language].WhatIsNiosh;
-    document.getElementById('ContactUs').textContent = languages[language].ContactUs;
-    document.getElementById("on-print-header").textContent = languages[language].onPrintHeader;
-
-    document.getElementById('CalculatorTitle').textContent = languages[language].CalculatorTitle;
-    document.getElementById("Inputs").textContent = languages[language].Inputs;
-    document.getElementById('unitOfMeasurement').textContent = languages[language].unitOfMeasurement;
-    document.getElementById('HorizontalLocation').textContent = languages[language].HorizontalLocation;
-    document.getElementById('HorizontalDescription').textContent = languages[language].HorizontalDescription;
-    document.getElementById('VerticalLocation').textContent = languages[language].VerticalLocation;
-    document.getElementById('VerticalDescription').textContent = languages[language].VerticalDescription;
-    document.getElementById('Distance').textContent = languages[language].Distance;
-    document.getElementById('DistanceDescription').textContent = languages[language].DistanceDescription;
-    document.getElementById('AngleOfAsymmetry').textContent = languages[language].AngleOfAsymmetry;
-    document.getElementById('AngleDescription').textContent = languages[language].AngleDescription;
-    document.getElementById('Coupling').textContent = languages[language].Coupling;
-    document.getElementById('CouplingDescription').textContent = languages[language].CouplingDescription;
-    document.getElementById('Frequency').textContent = languages[language].Frequency;
-    document.getElementById('FrequencyDescription').textContent = languages[language].FrequencyDescription;
-    document.getElementById('Duration').textContent = languages[language].Duration;
-    document.getElementById('DurationDescription').textContent = languages[language].DurationDescription;
-    document.getElementById('LoadWeight').textContent = languages[language].LoadWeight;
-    document.getElementById('WeightDescription').textContent = languages[language].WeightDescription;
-    document.getElementById('calculate').textContent = languages[language].calculate;
-    document.getElementById('clear').textContent = languages[language].clear;
-    document.getElementById('print').textContent = languages[language].print;
-    document.getElementById('save').textContent = languages[language].save;
-    document.getElementById('Results').textContent = languages[language].Results;
-    document.getElementById('RiskLevelSuggestions').textContent = languages[language].RiskLevelSuggestions;
-    document.getElementById('RecommendedWeightLimit').textContent = languages[language].RecommendedWeightLimit;
-    document.getElementById('LiftingIndex').textContent = languages[language].LiftingIndex;
-    document.getElementById('HorizontalMultiplier').textContent = languages[language].HorizontalMultiplier;
-    document.getElementById('VerticalMultiplier').textContent = languages[language].VerticalMultiplier;
-    document.getElementById('DistanceMultiplier').textContent = languages[language].DistanceMultiplier;
-    document.getElementById('AsymmetryMultiplier').textContent = languages[language].AsymmetryMultiplier;
-    document.getElementById('FrequencyMultiplier').textContent = languages[language].FrequencyMultiplier;
-    document.getElementById('CouplingMultiplier').textContent = languages[language].CouplingMultiplier;
-
-    document.getElementById('PrivacyPolicy').textContent = languages[language].PrivacyPolicy;
-    document.getElementById('GiveFeedback').textContent = languages[language].GiveFeedback;
-    document.getElementById('AboutusUppercase').textContent = languages[language].AboutusUppercase;
-    document.getElementById('WhoAreWe').textContent = languages[language].WhoAreWe;
-    document.getElementById('ContactUsFooter').textContent = languages[language].ContactUsFooter;
-    document.getElementById('Help').textContent = languages[language].Help;
-    document.getElementById('WhatIsNioshFooter').textContent = languages[language].WhatIsNioshFooter;
-    document.getElementById('FAQ').textContent = languages[language].FAQ;
-    document.getElementById('CalculatorTitleFooter').textContent = languages[language].CalculatorTitleFooter;
-
-
-    //2 CONDITION TEXT
-    /*
-    var titleText = document.getElementById('Home').textContent;
-    
-    if (titleText === languages.en.welcome || titleText === languages.en.goodbye) {
-        document.getElementById('title').textContent = languages[language].title;
-    } else {
-        document.getElementById('title').textContent = languages[language].goodbye;
-    } */
-    //END
-
-    generateSuggestions()
-}
-
-document.getElementById('btn-en').addEventListener('click', function () {
-    updateLanguage('en');
-});
-
-document.getElementById('btn-tr').addEventListener('click', function () {
-    updateLanguage('tr');
-});
 
 function generateSuggestions() {
 
