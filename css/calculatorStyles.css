@@ -6,6 +6,10 @@
      }
 }
 
+button {
+     cursor: pointer;
+}
+
 .on-print-header {
      display: none;
      margin-right: 15%;
@@ -140,7 +144,6 @@ input {
      display: inline-block;
      font-size: 16px;
      transition-duration: 0.4s;
-     cursor: pointer;
      width: 100%;
 }
 
@@ -154,7 +157,6 @@ input {
      display: inline-block;
      font-size: 16px;
      transition-duration: 0.4s;
-     cursor: pointer;
      width: 100%;
      margin-bottom: 20px;
 }
