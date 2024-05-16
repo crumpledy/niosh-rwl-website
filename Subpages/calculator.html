@@ -10,35 +10,21 @@
 
 <body>
   <header>
-    <nav class="navbar">
-      <div class="nav-top-left">
-        <div class="logo">
-          <img src="../images/chair.png" alt="ERGO">
-        </div>
-        <h2>ERGO</h2>
-      </div>
-      <ul class="nav-links" id="nav-links">
-        <li><a id="Home" href="#">Home</a></li>
-        <li><a id="Aboutus" href="#">About Us</a></li>
-        <li><a id="Blog" href="#">Blog</a></li>
-        <li><a id="WhatIsNiosh" href="#">What is NIOSH</a></li>
-        <li><a id="ContactUs" href="#">Contact Us</a></li>
-      </ul>
-      <div class="on-print-header" id="on-print-header">"Safer Workplaces a Healtier Future"</div>
-      <div class="language-selector" id="language-selector">
-        <button class="lang-switch" id="btn-tr"><img src="../images/turkey-flag.png" alt="TR"></button>
-        <button class="lang-switch" id="btn-en"><img src="../images/uk-flag.png" alt="EN"></button>
-      </div>
-    </nav>
-    <div class="title">
-      <h1 id="CalculatorTitle">NIOSH LIFTING CALCULATOR</h1>
+    <nav class="margin-right: 10px; /">
+      
+       
+      <div class="baslik1">
+        <img src="/images/chair.png" alt="Resim" class="">
+        <div class="">
+            <h1>NLC</h1>
     </div>
+    <div class="baslik2"> <h3 >“Safer Workplaces for a Healthier Future"</h3></div>
   </header>
   <!-- Inputs starts here. -->
   <div class="container">
-    <div>
-    </div>
     <div id="inputs">
+    <div style="display: inline-block;
+    max-width: max-content;">
       <h2><u id="Inputs">INPUTS</u></h2>
       <div class="input-group">
         <label id="unitOfMeasurement" for="unitOfMeasurement">Unit of Measurement</label>
@@ -47,53 +33,199 @@
           <option value="imperial">U.S. Customary</option>
         </select>
       </div>
+    </div>
+    <div style="display: inline-block;padding-left: 500px ;">      
+        <div> <h1 style="border: 5px solid black;
+          padding: 10px;">RWL = LC · HM · VM · DM · AM · FM · CM</h1></div>
+        <div> <h1 style="border: 5px solid black; 
+          padding: 10px;">LI = Weight of the lifted load / RWL</h1></div>
+      </div>
+    </div>
+   
 
+    
       <div class="input-header"></div>
       <div class="input-table", id="input-table">
-        <div class="input-row">
-          <div class="input-cell label" id="HorizontalLocation">Horizontal Location</div>
+        <div class="input-table">
+          <div class="input-cell label" id="HorizontalLocation">Horizontal Location <div style="position: relative; display: inline-block;">
+
+           <svg id="addImageButton" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+          </svg>
+      <div id="imageContainer" style="display: none;">
+          <img class="alert1" src="/images/alert1.png" alt="Alert Resmi">
+      </div>
+    </div> 
+      <script>
+        // Butonu seçme
+        var addButton = document.getElementById('addImageButton');
+      
+        // Resim konteynırını seçme
+        var imageContainer = document.getElementById('imageContainer');
+      
+        // Butona fareyle geldiğinde ve ayrıldığında olay dinleyicilerini ekleme
+        addButton.addEventListener('mouseover', function() {
+            // Resmi görünür hale getirme
+            imageContainer.style.display = 'block';
+        });
+      
+        addButton.addEventListener('mouseleave', function() {
+            // Resmi gizleme
+            imageContainer.style.display = 'none';
+        });
+      </script> </div>
           <div class="input-cell description" id="HorizontalDescription">distance from hands to mid-point between medial
             malleoli
             measured at origin and destination</div>
           <div class="input-cell input"><input id="horizontal-location-text" type="text"></div>
         </div>
-        <div class="input-row">
-          <div class="input-cell label" id="VerticalLocation">Vertical Location</div>
+        <div class="input-table">
+          <div class="input-cell label" id="VerticalLocation">Vertical Location <div style="position: relative; display: inline-block;">
+
+            <svg id="addImageButton2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+           </svg>
+       <div id="imageContainer2" style="display: none;">
+           <img class="alert1" src="/images/alert2.png" alt="Alert Resmi">
+       </div>
+     </div> 
+       <script>
+         // Butonu seçme
+         var addButton2 = document.getElementById('addImageButton2');
+       
+         // Resim konteynırını seçme
+         var imageContainer2 = document.getElementById('imageContainer2');
+       
+         // Butona fareyle geldiğinde ve ayrıldığında olay dinleyicilerini ekleme
+         addButton2.addEventListener('mouseover', function() {
+             // Resmi görünür hale getirme
+             imageContainer2.style.display = 'block';
+         });
+       
+         addButton2.addEventListener('mouseleave', function() {
+             // Resmi gizleme
+             imageContainer2.style.display = 'none';
+         });
+       </script> </div>
           <div class="input-cell description" id="VerticalDescription">distance from hands above floor measured at
             origin and
             destination</div>
           <div class="input-cell input">
             <input id="vertical-location-text" type="text">
           </div>
+          </div>
         </div>
-        <div class="input-row">
-          <div class="input-cell label" id="Distance">Distance</div>
+        <div class="input-table">
+          <div class="input-cell label" id="Distance">Distance  <div style="position: relative; display: inline-block;">
+
+            <svg id="addImageButton3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+           </svg>
+       <div id="imageContainer3" style="display: none;">
+           <img class="alert1" src="/images/alert3.png" alt="Alert Resmi">
+       </div>
+     </div> 
+       <script>
+         // Butonu seçme
+         var addButton3 = document.getElementById('addImageButton3');
+       
+         // Resim konteynırını seçme
+         var imageContainer3 = document.getElementById('imageContainer3');
+       
+         // Butona fareyle geldiğinde ve ayrıldığında olay dinleyicilerini ekleme
+         addButton3.addEventListener('mouseover', function() {
+             // Resmi görünür hale getirme
+             imageContainer3.style.display = 'block';
+         });
+       
+         addButton3.addEventListener('mouseleave', function() {
+             // Resmi gizleme
+             imageContainer3.style.display = 'none';
+         });
+       </script> </div> 
           <div class="input-cell description" id="DistanceDescription">vertical travel = high - low</div>
           <div class="input-cell input"><input id="distance-text" type="text"></div>
         </div>
-        <div class="input-row">
-          <div class="input-cell label" id="AngleOfAsymmetry">Angle of Asymmetry</div>
+        <div class="input-table">
+          <div class="input-cell label" id="AngleOfAsymmetry">Angle of Asymmetry <div style="position: relative; display: inline-block;">
+
+            <svg id="addImageButton4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+           </svg>
+       <div id="imageContainer4" style="display: none;">
+           <img class="alert1" src="/images/alert5.png" alt="Alert Resmi">
+       </div>
+     </div> 
+       <script>
+         // Butonu seçme
+         var addButton4 = document.getElementById('addImageButton4');
+       
+         // Resim konteynırını seçme
+         var imageContainer4 = document.getElementById('imageContainer4');
+       
+         // Butona fareyle geldiğinde ve ayrıldığında olay dinleyicilerini ekleme
+         addButton4.addEventListener('mouseover', function() {
+             // Resmi görünür hale getirme
+             imageContainer4.style.display = 'block';
+         });
+       
+         addButton4.addEventListener('mouseleave', function() {
+             // Resmi gizleme
+             imageContainer4.style.display = 'none';
+         });
+       </script> </div>
           <div class="input-cell description" id="AngleDescription">the angle between asymmetry line and sagittal line
           </div>
           <div class="input-cell input"><input id="angle-of-asymmetry-text" type="text"></div>
         </div>
-        <div class="input-row">
-          <div class="input-cell label" id="Coupling">Coupling</div>
+        <div class="input-table">
+          <div class="input-cell label" id="Coupling">Coupling <div style="position: relative; display: inline-block;">
+
+            <svg id="addImageButton5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+           </svg>
+       <div id="imageContainer5" style="display: none;">
+           <img class="alert1" src="/images/alert6.png" alt="Alert Resmi">
+       </div>
+     </div> 
+       <script>
+         // Butonu seçme
+         var addButton5 = document.getElementById('addImageButton5');
+       
+         // Resim konteynırını seçme
+         var imageContainer5 = document.getElementById('imageContainer5');
+       
+         // Butona fareyle geldiğinde ve ayrıldığında olay dinleyicilerini ekleme
+         addButton5.addEventListener('mouseover', function() {
+             // Resmi görünür hale getirme
+             imageContainer5.style.display = 'block';
+         });
+       
+         addButton5.addEventListener('mouseleave', function() {
+             // Resmi gizleme
+             imageContainer5.style.display = 'none';
+         });
+       </script> </div>
           <div class="input-cell description" id="CouplingDescription">How well the worker can grasp the object</div>
           <div class="input-cell input"><select class="selector" id="coupling-select"></select></div>
         </div>
-        <div class="input-row">
+        <div class="input-table">
           <div class="input-cell label" id="Frequency">Frequency</div>
           <div class="input-cell description" id="FrequencyDescription">the number of lifts per minute</div>
           <div class="input-cell input"><select class="selector" id="frequency-select"></select></div>
         </div>
-        <div class="input-row">
+        <div class="input-table">
           <div class="input-cell label" id="Duration">Duration</div>
           <div class="input-cell description" id="DurationDescription">the total time spent lifting over a work shift
           </div>
           <div class="input-cell input"><select class="selector" id="duration-select"></select></div>
         </div>
-        <div class="input-row">
+        <div class="input-table">
           <div class="input-cell label" id="LoadWeight">Load Weight</div>
           <div class="input-cell description" id="WeightDescription">weight of the object lifted</div>
           <div class="input-cell input"><input id="load-weight-text" type="text"></div>
@@ -110,7 +242,7 @@
         <button onclick="didTapSaveButton()" id="save">Save</button>
       </div>
     </div>
-  </div>
+  </div></div>
   <!--- Results Start -->
   <div id="output-table">
     <table>
@@ -163,60 +295,17 @@
     </table>
   </div>
   <!-- Footer start -->
-  <div class="footer-container" id="footer-container">
-    <div class="footer-section">
-      <h3>ERGO</h3>
-      <ul>
-        <li><a id="Blog" href="#">Blog</a></li>
-        <li><a id="PrivacyPolicy" href="#">Privacy Policy</a></li>
-        <li><a id="GiveFeedback" href="#">Give Feedback</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h3 id="AboutusUppercase">ABOUT US</h3>
-      <ul>
-        <li><a id="WhoAreWe" href="#">Who are we</a></li>
-        <li><a id="ContactUsFooter" href="#">Contact Us</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <p>Bahcesehir University Guney Campus<br>
-        Yildiz, Çırağan Cd., 34349 Beşiktaş/İstanbul<br>
-      </p>
-      <div class="linker-links">
-        <a href="mailto:info@ergo.com">info@ergo.com</a>
-        <div class="social-icons">
-          <a href="#"><img src="../images/facebook-circle.png" alt="Facebook linker" id="svgImageFacebook"></a>
-          <a href="#"><img src="../images/youtube-circle.png" alt="YouTube linker" id="svgImageYoutube"></a>
-          <a href="#"><img src="../images/twitter-circle.png" alt="Twitter linker" id="svgImageTwitter"></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-section">
-      <h3 id="Help">HELP</h3>
-      <ul>
-        <li><a id="WhatIsNioshFooter" href="#">What is NIOSH</a></li>
-        <li><a id="FAQ" href="#">FAQ</a></li>
-      </ul>
-    </div>
-  </div>
+ 
+     
   <div class="footer-bar", id="footer-bar">
     <img src="../images/chair.png" alt="ERGO Logo" style="width: 40px;">
     <h2>ERGO</h2>
     <h1 id="CalculatorTitleFooter">NIOSH LIFTING CALCULATOR</h1>
-    <div class="on-print-footer" id="on-print-footer">
-      <p>Bahcesehir University Guney Campus<br>
-        Yildiz, Çırağan Cd., 34349 Beşiktaş/İstanbul</p>
-    <div class="on-print-footer-info", id="on-print-footer-info">
-        <a href="mailto:info@ergo.com">info@ergo.com</a>
-      <div class="social-icons">
-        <a href="#"><img src="../images/facebook-circle.png" alt="Facebook linker" id="svgImageFacebook"></a>
-        <a href="#"><img src="../images/youtube-circle.png" alt="YouTube linker" id="svgImageYoutube"></a>
-        <a href="#"><img src="../images/twitter-circle.png" alt="Twitter linker" id="svgImageTwitter"></a>
-      </div>
+    <div class="altyazi"><p>
+      Bahcesehir University Guney Campus
+Yıldız, Çırağan Cd., 34349 Beşiktaş/İstanbul
+    </p></div>
     </div>
-    </div>
-  </div>
   <!-- Footer end -->
 </body>
 <script src="../js/calculator.js"></script>
