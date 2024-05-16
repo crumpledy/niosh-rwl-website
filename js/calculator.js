@@ -17,30 +17,30 @@ var durationOptions = ["", "≤ 1 Hour", ">1 but ≤ 2 Hours", ">2 but ≤ 8 Hou
 
 // F:6 da <= 1 hourdaki 0.75 ler dökümanda 75 sorarız!
 const liftTable = [
-    { F: "<=0.2", "≤ 1 Hour": { "<75cm": 1.00, ">=75cm": 1.00 }, ">1 but ≤ 2 Hours": { "<75cm": 0.95, ">=75cm": 0.95 }, ">2 but ≤ 8 Hours": { "<75cm": 0.85, ">=75cm": 0.85 } },
-    { F: "0.5", "≤ 1 Hour": { "<75cm": 0.97, ">=75cm": 0.97 }, ">1 but ≤ 2 Hours": { "<75cm": 0.92, ">=75cm": 0.92 }, ">2 but ≤ 8 Hours": { "<75cm": 0.81, ">=75cm": 0.81 } },
-    { F: "1", "≤ 1 Hour": { "<75cm": 0.94, ">=75cm": 0.94 }, ">1 but ≤ 2 Hours": { "<75cm": 0.88, ">=75cm": 0.88 }, ">2 but ≤ 8 Hours": { "<75cm": 0.75, ">=75cm": 0.75 } },
-    { F: "2", "≤ 1 Hour": { "<75cm": 0.91, ">=75cm": 0.91 }, ">1 but ≤ 2 Hours": { "<75cm": 0.84, ">=75cm": 0.84 }, ">2 but ≤ 8 Hours": { "<75cm": 0.65, ">=75cm": 0.65 } },
-    { F: "3", "≤ 1 Hour": { "<75cm": 0.88, ">=75cm": 0.88 }, ">1 but ≤ 2 Hours": { "<75cm": 0.79, ">=75cm": 0.79 }, ">2 but ≤ 8 Hours": { "<75cm": 0.55, ">=75cm": 0.55 } },
-    { F: "4", "≤ 1 Hour": { "<75cm": 0.84, ">=75cm": 0.84 }, ">1 but ≤ 2 Hours": { "<75cm": 0.72, ">=75cm": 0.72 }, ">2 but ≤ 8 Hours": { "<75cm": 0.45, ">=75cm": 0.45 } },
-    { F: "5", "≤ 1 Hour": { "<75cm": 0.80, ">=75cm": 0.80 }, ">1 but ≤ 2 Hours": { "<75cm": 0.60, ">=75cm": 0.60 }, ">2 but ≤ 8 Hours": { "<75cm": 0.35, ">=75cm": 0.35 } },
-    { F: "6", "≤ 1 Hour": { "<75cm": 0.75, ">=75cm": 0.75 }, ">1 but ≤ 2 Hours": { "<75cm": 0.50, ">=75cm": 0.50 }, ">2 but ≤ 8 Hours": { "<75cm": 0.27, ">=75cm": 0.27 } },
-    { F: "7", "≤ 1 Hour": { "<75cm": 0.70, ">=75cm": 0.70 }, ">1 but ≤ 2 Hours": { "<75cm": 0.42, ">=75cm": 0.42 }, ">2 but ≤ 8 Hours": { "<75cm": 0.22, ">=75cm": 0.22 } },
-    { F: "8", "≤ 1 Hour": { "<75cm": 0.60, ">=75cm": 0.60 }, ">1 but ≤ 2 Hours": { "<75cm": 0.35, ">=75cm": 0.35 }, ">2 but ≤ 8 Hours": { "<75cm": 0.18, ">=75cm": 0.18 } },
-    { F: "9", "≤ 1 Hour": { "<75cm": 0.52, ">=75cm": 0.52 }, ">1 but ≤ 2 Hours": { "<75cm": 0.30, ">=75cm": 0.30 }, ">2 but ≤ 8 Hours": { "<75cm": 0.00, ">=75cm": 0.15 } },
-    { F: "10", "≤ 1 Hour": { "<75cm": 0.45, ">=75cm": 0.45 }, ">1 but ≤ 2 Hours": { "<75cm": 0.26, ">=75cm": 0.26 }, ">2 but ≤ 8 Hours": { "<75cm": 0.00, ">=75cm": 0.13 } },
-    { F: "11", "≤ 1 Hour": { "<75cm": 0.41, ">=75cm": 0.41 }, ">1 but ≤ 2 Hours": { "<75cm": 0.00, ">=75cm": 0.23 }, ">2 but ≤ 8 Hours": { "<75cm": 0.00, ">=75cm": 0.00 } },
-    { F: "12", "≤ 1 Hour": { "<75cm": 0.37, ">=75cm": 0.37 }, ">1 but ≤ 2 Hours": { "<75cm": 0.00, ">=75cm": 0.21 }, ">2 but ≤ 8 Hours": { "<75cm": 0.00, ">=75cm": 0.00 } },
-    { F: "13", "≤ 1 Hour": { "<75cm": 0.00, ">=75cm": 0.34 }, ">1 but ≤ 2 Hours": { "<75cm": 0.00, ">=75cm": 0.00 }, ">2 but ≤ 8 Hours": { "<75cm": 0.00, ">=75cm": 0.00 } },
-    { F: "14", "≤ 1 Hour": { "<75cm": 0.00, ">=75cm": 0.31 }, ">1 but ≤ 2 Hours": { "<75cm": 0.00, ">=75cm": 0.00 }, ">2 but ≤ 8 Hours": { "<75cm": 0.00, ">=75cm": 0.00 } },
-    { F: "15", "≤ 1 Hour": { "<75cm": 0.00, ">=75cm": 0.28 }, ">1 but ≤ 2 Hours": { "<75cm": 0.00, ">=75cm": 0.00 }, ">2 but ≤ 8 Hours": { "<75cm": 0.00, ">=75cm": 0.00 } },
-    { F: ">15", "≤ 1 Hour": { "<75cm": 0.00, ">=75cm": 0.00 }, ">1 but ≤ 2 Hours": { "<75cm": 0.00, ">=75cm": 0.00 }, ">2 but ≤ 8 Hours": { "<75cm": 0.00, ">=75cm": 0.00 } }
+    { F: "<=0.2", "≤ 1 Hour": { "<75cm": 1.000, ">=75cm": 1.000 }, ">1 but ≤ 2 Hours": { "<75cm": 0.950, ">=75cm": 0.950 }, ">2 but ≤ 8 Hours": { "<75cm": 0.850, ">=75cm": 0.850 } },
+    { F: "0.5", "≤ 1 Hour": { "<75cm": 0.970, ">=75cm": 0.970 }, ">1 but ≤ 2 Hours": { "<75cm": 0.920, ">=75cm": 0.920 }, ">2 but ≤ 8 Hours": { "<75cm": 0.810, ">=75cm": 0.810 } },
+    { F: "1", "≤ 1 Hour": { "<75cm": 0.940, ">=75cm": 0.940 }, ">1 but ≤ 2 Hours": { "<75cm": 0.880, ">=75cm": 0.880 }, ">2 but ≤ 8 Hours": { "<75cm": 0.750, ">=75cm": 0.750 } },
+    { F: "2", "≤ 1 Hour": { "<75cm": 0.910, ">=75cm": 0.910 }, ">1 but ≤ 2 Hours": { "<75cm": 0.840, ">=75cm": 0.840 }, ">2 but ≤ 8 Hours": { "<75cm": 0.650, ">=75cm": 0.650 } },
+    { F: "3", "≤ 1 Hour": { "<75cm": 0.880, ">=75cm": 0.880 }, ">1 but ≤ 2 Hours": { "<75cm": 0.790, ">=75cm": 0.790 }, ">2 but ≤ 8 Hours": { "<75cm": 0.550, ">=75cm": 0.550 } },
+    { F: "4", "≤ 1 Hour": { "<75cm": 0.840, ">=75cm": 0.840 }, ">1 but ≤ 2 Hours": { "<75cm": 0.720, ">=75cm": 0.720 }, ">2 but ≤ 8 Hours": { "<75cm": 0.450, ">=75cm": 0.450 } },
+    { F: "5", "≤ 1 Hour": { "<75cm": 0.800, ">=75cm": 0.800 }, ">1 but ≤ 2 Hours": { "<75cm": 0.600, ">=75cm": 0.600 }, ">2 but ≤ 8 Hours": { "<75cm": 0.350, ">=75cm": 0.350 } },
+    { F: "6", "≤ 1 Hour": { "<75cm": 0.750, ">=75cm": 0.750 }, ">1 but ≤ 2 Hours": { "<75cm": 0.500, ">=75cm": 0.500 }, ">2 but ≤ 8 Hours": { "<75cm": 0.270, ">=75cm": 0.270 } },
+    { F: "7", "≤ 1 Hour": { "<75cm": 0.700, ">=75cm": 0.700 }, ">1 but ≤ 2 Hours": { "<75cm": 0.420, ">=75cm": 0.420 }, ">2 but ≤ 8 Hours": { "<75cm": 0.220, ">=75cm": 0.220 } },
+    { F: "8", "≤ 1 Hour": { "<75cm": 0.600, ">=75cm": 0.600 }, ">1 but ≤ 2 Hours": { "<75cm": 0.350, ">=75cm": 0.350 }, ">2 but ≤ 8 Hours": { "<75cm": 0.180, ">=75cm": 0.180 } },
+    { F: "9", "≤ 1 Hour": { "<75cm": 0.520, ">=75cm": 0.520 }, ">1 but ≤ 2 Hours": { "<75cm": 0.300, ">=75cm": 0.300 }, ">2 but ≤ 8 Hours": { "<75cm": 0.000, ">=75cm": 0.150 } },
+    { F: "10", "≤ 1 Hour": { "<75cm": 0.450, ">=75cm": 0.450 }, ">1 but ≤ 2 Hours": { "<75cm": 0.260, ">=75cm": 0.260 }, ">2 but ≤ 8 Hours": { "<75cm": 0.000, ">=75cm": 0.130 } },
+    { F: "11", "≤ 1 Hour": { "<75cm": 0.410, ">=75cm": 0.410 }, ">1 but ≤ 2 Hours": { "<75cm": 0.000, ">=75cm": 0.230 }, ">2 but ≤ 8 Hours": { "<75cm": 0.000, ">=75cm": 0.000 } },
+    { F: "12", "≤ 1 Hour": { "<75cm": 0.370, ">=75cm": 0.370 }, ">1 but ≤ 2 Hours": { "<75cm": 0.000, ">=75cm": 0.210 }, ">2 but ≤ 8 Hours": { "<75cm": 0.000, ">=75cm": 0.000 } },
+    { F: "13", "≤ 1 Hour": { "<75cm": 0.000, ">=75cm": 0.340 }, ">1 but ≤ 2 Hours": { "<75cm": 0.000, ">=75cm": 0.000 }, ">2 but ≤ 8 Hours": { "<75cm": 0.000, ">=75cm": 0.000 } },
+    { F: "14", "≤ 1 Hour": { "<75cm": 0.000, ">=75cm": 0.310 }, ">1 but ≤ 2 Hours": { "<75cm": 0.000, ">=75cm": 0.000 }, ">2 but ≤ 8 Hours": { "<75cm": 0.000, ">=75cm": 0.000 } },
+    { F: "15", "≤ 1 Hour": { "<75cm": 0.000, ">=75cm": 0.280 }, ">1 but ≤ 2 Hours": { "<75cm": 0.000, ">=75cm": 0.000 }, ">2 but ≤ 8 Hours": { "<75cm": 0.000, ">=75cm": 0.000 } },
+    { F: ">15", "≤ 1 Hour": { "<75cm": 0.000, ">=75cm": 0.000 }, ">1 but ≤ 2 Hours": { "<75cm": 0.000, ">=75cm": 0.000 }, ">2 but ≤ 8 Hours": { "<75cm": 0.000, ">=75cm": 0.000 } }
 ];
 
 const couplingTable = [
-    { F: "Good", "<75cm": 1.00, ">=75cm": 1.00 },
-    { F: "Fair", "<75cm": 0.95, ">=75cm": 1.00 },
-    { F: "Poor", "<75cm": 0.90, ">=75cm": 0.90 }
+    { F: "Good", "<75cm": 1.000, ">=75cm": 1.000 },
+    { F: "Fair", "<75cm": 0.950, ">=75cm": 1.000 },
+    { F: "Poor", "<75cm": 0.900, ">=75cm": 0.900 }
 ];
 
 // Output Table
@@ -152,20 +152,20 @@ function calculateHm() {
         hmSuggestionCell.innerText = "Your horizontal distance is greater than acceptable level. You should reduce your horizontal distance and bring it closer to the ideal value of 25 cm.";
 
     } else {
-        hmOutput.innerText = 25/isUsMeasurement(horizontalLocation.value);
+        hmOutput.innerText = (25/isUsMeasurement(horizontalLocation.value)).toFixed(3);
         hmSuggestionCell.innerText = "You should reduce your horizontal distance and bring it closer to the ideal value of 25 cm.";
     }
 }
 var vmSuggestionCell = document.getElementById("vm-suggestion"); 
 function calculateVm() {
-    if (isUsMeasurement(verticalLocation.value) <= 75) {
+    if (isUsMeasurement(verticalLocation.value) == 75) {
         vmOutput.innerText = 1;
         vmSuggestionCell.innerText = " You should increase the lifting height to bring it closer to the ideal value of 75."; 
     } else if (isUsMeasurement(verticalLocation.value) >= 175) {
         vmOutput.innerText = 0;
         vmSuggestionCell.innerText = "Your vertical distance is greater than acceptable level, you should reduce the lifting height and bring it closer to the ideal value of 75."
     } else {
-        vmOutput.innerText = 1-(0.003*Math.abs(isUsMeasurement(verticalLocation.value) - 75));
+        vmOutput.innerText = (1-(0.003*Math.abs(isUsMeasurement(verticalLocation.value) - 75))).toFixed(3);
         vmSuggestionCell.innerText = " You should reduce the lifting height and bring it closer to the ideal value of 75."
     }
 }
@@ -178,7 +178,7 @@ function calculateDm() {
         dmOutput.innerText = 0;
         dmSuggestionCell.innerText ="You should reduce the distance value and bring it closer to the ideal value of 25." 
     } else {
-        dmOutput.innerText = 0.85 * (4.5/isUsMeasurement(distance.value));
+        dmOutput.innerText = (0.82 + (4.5/isUsMeasurement(distance.value))).toFixed(3);
         dmSuggestionCell.innerText = "You should reduce your distance value, bringing it closer to the ideal 25."
     }
 }
@@ -191,13 +191,13 @@ function calculateAm() {
         amOutput.innerText = 0;
         amSuggestionCell.innerText = "Your asymmetry factor is greater than acceptable level. You should reduce your lift angle and bring it closer to the ideal 0.S"
     } else {
-        amOutput.innerText = 1-(0.0032*isUsMeasurement(angleOfAsymmetry.value));
+        amOutput.innerText = (1-(0.0032*isUsMeasurement(angleOfAsymmetry.value))).toFixed(3);
         amSuggestionCell.innerText = "You should reduce your lift angle and bring it closer to the ideal 0."
     }
 }
 var fmSuggestionCell = document.getElementById("fm-suggestion");
 function calculateFm() {
-    fmOutput.innerText = getTableValue(selectFrequency.value, selectDuration.value, isUsMeasurement(verticalLocation.value));
+    fmOutput.innerText = getTableValue(selectFrequency.value, selectDuration.value, isUsMeasurement(verticalLocation.value)).toFixed(3);
     if((isUsMeasurement(verticalLocation.value)>=75) && selectDuration.value === durationOptions[1]) {
 
         if(selectFrequency.value===frequencyOptions[1]){
@@ -343,7 +343,7 @@ function getTableValue(frequency, workDuration, verticalHeight) {
   }
   var cmSuggestionCell = document.getElementById("cm-suggestion");
   function calculateCm() {
-    cmOutput.innerText = getCmValueTable(selectCoupling.value, verticalLocation.value);
+    cmOutput.innerText = getCmValueTable(selectCoupling.value, verticalLocation.value).toFixed(3);
     
     if (cmOutput.innerText == 1) {
         cmSuggestionCell.innerText = " "
@@ -375,11 +375,11 @@ function getCmValueTable(coupling, verticalHeight) {
 }
 
 function calculateRwl() {
-    rwlOutput.innerText = 23 * parseFloat(hmOutput.innerText) * parseFloat(vmOutput.innerText) * parseFloat(dmOutput.innerText) * parseFloat(amOutput.innerText) * parseFloat(fmOutput.innerText) * parseFloat(cmOutput.innerText);
+    rwlOutput.innerText = (23 * parseFloat(hmOutput.innerText) * parseFloat(vmOutput.innerText) * parseFloat(dmOutput.innerText) * parseFloat(amOutput.innerText) * parseFloat(fmOutput.innerText) * parseFloat(cmOutput.innerText)).toFixed(3);
 }
 
 function calculateLi() {
-    liOutput.innerText = parseFloat(loadWeight.value) / parseFloat(rwlOutput.innerText);
+    liOutput.innerText = (parseFloat(loadWeight.value) / parseFloat(rwlOutput.innerText)).toFixed(3);
 }
 
 function checkValues() {
