@@ -209,10 +209,12 @@
           padding: 8px;
           vertical-align: middle;
           background-color: rgb(227, 246, 252);
+          
      }
      
      .label {
           font-weight: bold;
+          width: 20%;
      }
      
      .input-cell.input {
@@ -422,3 +424,6 @@
      #output-table {
           page-break-before: always;
      }
+.description{
+     text-align: left;
+}

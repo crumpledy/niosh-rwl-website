@@ -161,8 +161,7 @@ var vmSuggestionCell = document.getElementById("vm-suggestion");
 function calculateVm() {
     if (isUsMeasurement(verticalLocation.value) == 75) {
         vmOutput.innerText = 1;
-        vmSuggestionCell.style.color = "black";
-        vmSuggestionCell.innerText = " You should increase the lifting height to bring it closer to the ideal value of 75."; 
+        vmSuggestionCell.innerText = ""; 
     } else if (isUsMeasurement(verticalLocation.value) >= 175) {
         vmOutput.innerText = 0;
         vmSuggestionCell.style.color = "red";
