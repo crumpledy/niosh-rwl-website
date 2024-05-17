@@ -118,7 +118,7 @@ function clearInputs() {
 
 function calculate() {
     checkValues()
-    
+
     calculateHm()
     calculateVm()
     calculateDm()
@@ -130,7 +130,7 @@ function calculate() {
 
     generateSuggestions()
     showOutputTable()
-    
+
 }
 
 function isUsMeasurement(value) {
@@ -148,7 +148,7 @@ function calculateHm() {
         hmOutput.innerText = 1;
         hmSuggestionCell.innerText = "";
     } else if (isUsMeasurement(horizontalLocation.value) >= 63) {
-        hmOutput.innerText = 0; 
+        hmOutput.innerText = 0;
         hmSuggestionCell.innerText = "Your horizontal distance is greater than acceptable level. You should reduce your horizontal distance and bring it closer to the ideal value of 25 cm.";
         hmSuggestionCell.style.color = "red";
     } else {
@@ -157,11 +157,11 @@ function calculateHm() {
         hmSuggestionCell.style.color = "black";
     }
 }
-var vmSuggestionCell = document.getElementById("vm-suggestion"); 
+var vmSuggestionCell = document.getElementById("vm-suggestion");
 function calculateVm() {
     if (isUsMeasurement(verticalLocation.value) == 75) {
         vmOutput.innerText = 1;
-        vmSuggestionCell.innerText = ""; 
+        vmSuggestionCell.innerText = "";
     } else if (isUsMeasurement(verticalLocation.value) >= 175) {
         vmOutput.innerText = 0;
         vmSuggestionCell.style.color = "red";
@@ -180,7 +180,7 @@ function calculateDm() {
     } else if (isUsMeasurement(distance.value) >= 175) {
         dmOutput.innerText = 0;
         dmSuggestionCell.style.color = "red";
-        dmSuggestionCell.innerText ="You should reduce the distance value and bring it closer to the ideal value of 25." 
+        dmSuggestionCell.innerText ="You should reduce the distance value and bring it closer to the ideal value of 25."
     } else {
         dmOutput.innerText = (0.82 + (4.5/isUsMeasurement(distance.value))).toFixed(3);
         dmSuggestionCell.style.color = "black";
@@ -219,7 +219,7 @@ function calculateFm() {
             fmSuggestionCell.style.color = "black";
         }
 
-    
+
     }
     if((isUsMeasurement(verticalLocation.value)<75) && selectDuration.value === durationOptions[1]) {
 
@@ -228,12 +228,12 @@ function calculateFm() {
             fmSuggestionCell.style.color = "black";
         }
         else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
-            fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 13 lifts per minute OR you should make the vertical value ideally 75 cm." 
+            fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 13 lifts per minute OR you should make the vertical value ideally 75 cm."
             fmSuggestionCell.style.color = "red";
         }
         else if(selectFrequency.value===frequencyOptions[18]){
             fmSuggestionCell.style.color = "red";
-            
+
             fmSuggestionCell.innerText ="You should reduce the frequency of lifting to less than 13 lifts per minute."
         }
         else{
@@ -241,7 +241,7 @@ function calculateFm() {
             fmSuggestionCell.innerText=  "You should reduce your lifting frequency."
         }
 
-    
+
     }
 
     if((isUsMeasurement(verticalLocation.value)<75) && selectDuration.value === durationOptions[2]) {
@@ -256,7 +256,7 @@ function calculateFm() {
         }
         else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
             fmSuggestionCell.style.color = "red";
-            fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 11 lifts per minute OR you should make the vertical value ideally 75 cm." 
+            fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 11 lifts per minute OR you should make the vertical value ideally 75 cm."
 
         }
         else if(selectFrequency.value===frequencyOptions[18]){
@@ -268,7 +268,7 @@ function calculateFm() {
             fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
         }
 
-    
+
     }
     if((isUsMeasurement(verticalLocation.value)>=75) && selectDuration.value === durationOptions[2]) {
 
@@ -278,7 +278,7 @@ function calculateFm() {
         }
         else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
             fmSuggestionCell.style.color = "red";
-            fmSuggestionCell.innerText = "You should reduce your work duration OR you should reduce the frequency of lifting to less than 13 lifts per minute." 
+            fmSuggestionCell.innerText = "You should reduce your work duration OR you should reduce the frequency of lifting to less than 13 lifts per minute."
 
         }
         else if(selectFrequency.value===frequencyOptions[18]){
@@ -290,7 +290,7 @@ function calculateFm() {
             fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
         }
 
-    
+
     }
     if((isUsMeasurement(verticalLocation.value)<75) && selectDuration.value === durationOptions[3]) {
 
@@ -308,7 +308,7 @@ function calculateFm() {
         }
         else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
             fmSuggestionCell.style.color = "red";
-            fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 9 lifts per minute OR you should bring the vertical value closer to the ideal 75 cm and you should make your study periods equal to or shorter than 1 hour." 
+            fmSuggestionCell.innerText = "You should reduce the frequency of lifting to less than 9 lifts per minute OR you should bring the vertical value closer to the ideal 75 cm and you should make your study periods equal to or shorter than 1 hour."
 
         }
         else if(selectFrequency.value===frequencyOptions[18]){
@@ -320,7 +320,7 @@ function calculateFm() {
             fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
         }
 
-    
+
     }
     if((isUsMeasurement(verticalLocation.value)>=75) && selectDuration.value === durationOptions[3]) {
 
@@ -334,7 +334,7 @@ function calculateFm() {
         }
         else if(selectFrequency.value===frequencyOptions[15]||selectFrequency.value===frequencyOptions[16]||selectFrequency.value===frequencyOptions[17]){
             fmSuggestionCell.style.color = "red";
-            fmSuggestionCell.innerText = "You should make your study periods equal to or shorter than 1 hour OR you should reduce the frequency of lifting to less than 11 lifts per minute." 
+            fmSuggestionCell.innerText = "You should make your study periods equal to or shorter than 1 hour OR you should reduce the frequency of lifting to less than 11 lifts per minute."
 
         }
         else if(selectFrequency.value===frequencyOptions[18]){
@@ -346,9 +346,9 @@ function calculateFm() {
             fmSuggestionCell.innerText=  "You should reduce the frequency of lifting to less than 11 lifts per minute."
         }
 
-    
+
     }
-   
+
 }
 
 function getTableValue(frequency, workDuration, verticalHeight) {
@@ -381,7 +381,7 @@ function getTableValue(frequency, workDuration, verticalHeight) {
   var cmSuggestionCell = document.getElementById("cm-suggestion");
   function calculateCm() {
     cmOutput.innerText = getCmValueTable(selectCoupling.value, verticalLocation.value).toFixed(3);
-    
+
     if (cmOutput.innerText == 1) {
         cmSuggestionCell.innerText = " "
     } else if(cmOutput.innerText == 0.90) {
@@ -443,25 +443,25 @@ function checkValues() {
     } else {
         angleOfAsymmetry.style.border = "";
     }
-    
+
     if (selectCoupling.selectedIndex == 0 || (isNaN(selectCoupling.selectedIndex))) {
         selectCoupling.style.border = "2px solid red";
     } else {
         selectCoupling.style.border = "";
     }
-    
+
     if (selectFrequency.selectedIndex == 0 || (isNaN(selectFrequency.selectedIndex))) {
         selectFrequency.style.border = "2px solid red";
     } else {
         selectFrequency.style.border = "";
     }
-    
+
     if (selectDuration.selectedIndex == 0|| (isNaN(selectDuration.selectedIndex))) {
         selectDuration.style.border = "2px solid red";
     } else {
         selectDuration.style.border = "";
     }
-    
+
     if (loadWeight.value == "" || (isNaN(loadWeight.value))) {
         loadWeight.style.border = "2px solid red";
     } else {
@@ -493,7 +493,6 @@ function didTapPrintButton() {
 
 function prepareForPrint() {
     actionButtons.style.display = "none";
-    onPrintFooterBar.style.justifyContent = "space-between";
     inputTable.style.marginBottom = "20px";
 }
 
@@ -503,8 +502,6 @@ function printPage() {
 
 function removePrintingEffect() {
     actionButtons.style.display = "block";
-    onPrintFooterBar.style.justifyContent = "flex-start";
-
     inputTable.style.marginBottom = "0px";
 }
 

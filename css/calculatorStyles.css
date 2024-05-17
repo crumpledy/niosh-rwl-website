@@ -431,3 +431,26 @@
           .description {
                text-align: left;
           }
+
+          .footer {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               background-color: #a8d8e8;
+               padding: 10px 20px;
+               font-family: Arial, sans-serif;
+           }
+           .footer .left, .footer .right {
+               display: flex;
+               align-items: center;
+           }
+           .footer .left img {
+               height: 50px;
+               margin-right: 10px;
+           }
+           .footer .left div {
+               font-weight: bold;
+           }
+           .footer .right {
+               text-align: right;
+           }
