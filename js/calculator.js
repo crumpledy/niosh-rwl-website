@@ -128,9 +128,7 @@ function calculate() {
     calculateRwl()
     calculateLi()
 
-    generateSuggestions()
     showOutputTable()
-
 }
 
 function isUsMeasurement(value) {
@@ -504,12 +502,3 @@ function removePrintingEffect() {
     actionButtons.style.display = "block";
     inputTable.style.marginBottom = "0px";
 }
-
-
-
-function generateSuggestions() {
-
-}
-
-
-

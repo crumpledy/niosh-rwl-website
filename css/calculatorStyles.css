@@ -375,7 +375,7 @@
                width: 80%;
                margin: auto;
                border-collapse: collapse;
-               margin-bottom: 300px;
+               margin-bottom: 200px;
           }
 
           th,
@@ -391,7 +391,7 @@
           }
 
           td {
-               height: 50px;
+               height: 40px;
                padding: 10px;
                background-color: #f8f9fa;
           }
@@ -408,7 +408,7 @@
 
           .baslik2 {
                display: inline-block;
-               font-size: 40px;
+               font-size: 2.2vw;
                margin: auto;
           }
 
