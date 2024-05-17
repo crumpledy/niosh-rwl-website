@@ -6,6 +6,10 @@
 
           @media print {}
 
+          #output-table {
+               page-break-before: always;
+          }
+
           button {
                cursor: pointer;
           }
@@ -409,10 +413,7 @@
           }
 
           .altyazi {
-               /* İsteğe bağlı, div genişliği */
-               /* İsteğe bağlı, sınır eklemek için */
-               padding-left: 1000px;
-
+               padding-left: 50%;
           }
 
           .alert1 {
