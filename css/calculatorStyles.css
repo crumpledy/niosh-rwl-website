@@ -427,6 +427,6 @@
                page-break-before: always;
           }
 
-.description {
-     text-align: left;
-}
+          .description {
+               text-align: left;
+          }
