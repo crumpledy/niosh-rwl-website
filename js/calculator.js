@@ -479,17 +479,13 @@ function hideOutputTable() {
     hideOutputTable();
 })();
 
-function prepareForSave() {
-    prepareForPrint()
-}
-
 function didTapPrintButton() {
-    prepareForPrint()
+    prepareForOutput()
     printPage()
-    removePrintingEffect()
+    removeOutputEffect()
 }
 
-function prepareForPrint() {
+function prepareForOutput() {
     actionButtons.style.display = "none";
     inputTable.style.marginBottom = "20px";
 }
@@ -498,7 +494,7 @@ function printPage() {
     window.print();
 }
 
-function removePrintingEffect() {
+function removeOutputEffect() {
     actionButtons.style.display = "block";
     inputTable.style.marginBottom = "0px";
 }
