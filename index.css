@@ -1,22 +1,13 @@
 .start-button {
   position: absolute;
-  /* Mutlak pozisyon */
   top: 93%;
-  /* Üst kenarı görselin yarısı kadar aşağıda */
   left: 50%;
-  /* Sol kenarı görselin yarısı kadar sağda */
   transform: translate(-50%, -50%);
-  /* Merkezlemek için */
   padding: 30px 65px;
-  /* Butonun iç boşluğu */
   background-color: #4242f7;
-  /* Arka plan rengi */
   color: white;
-  /* Metin rengi */
   border: 5px solid #000000;
-  /* Kenarlık yok */
   cursor: pointer;
-  /* İmleci el işareti yap */
   font-size: 50px;
 
 }
@@ -24,34 +15,22 @@
 .ust-yazi {
   position: absolute;
   top: 50%;
-  /* Görselin yüksekliğinin ortasına yerleştirme */
   left: 50%;
-  /* Görselin genişliğinin ortasına yerleştirme */
   transform: translate(-50%, -50%);
-  /* Merkezden hizalama */
   color: white;
-  /* Yazı rengi */
   font-size: 85px;
-  /* Yazı boyutu */
   font-weight: bolder;
-  /* Yazı kalınlığı */
   font-style: inherit;
 }
 
 .ust-yazi1 {
   position: absolute;
   top: 25%;
-  /* Görselin yüksekliğinin ortasına yerleştirme */
   left: 50%;
-  /* Görselin genişliğinin ortasına yerleştirme */
   transform: translate(-50%, -50%);
-  /* Merkezden hizalama */
   color: white;
-  /* Yazı rengi */
   font-size: 85px;
-  /* Yazı boyutu */
   font-weight: bolder;
-  /* Yazı kalınlığı */
   font-style: inherit;
 }
 
@@ -213,7 +192,6 @@
 
 .resim {
   width: 200px;
-  /* Resim genişliği */
   height: 150px;
   margin-bottom: 10px;
 }
@@ -240,17 +218,12 @@
 
 .th,
 td {
-
   text-align: center;
   padding: 8px;
   width: 100px;
-  /* Hücre genişliği sabitlenmiştir */
   height: 500px;
-  /* Hücre yüksekliği sabitlenmiştir */
   max-width: 150px;
-  /* Hücre genişliği maksimum 150px olacaktır */
   overflow: hidden;
-  /* İçeriğin taşmasını önleme */
 }
 
 .alt-metin {
@@ -290,49 +263,33 @@ td {
 .image-text {
   position: absolute;
   top: 8%;
-  /* Dikey olarak ortala */
   left: 34%;
-  /* Yatay olarak ortala */
   transform: translate(-50%, -50%);
-  /* Ortalanmış metni düzelt */
   color: white;
-  /* Yazı rengi */
   font-size: 52px;
-  /* Yazı boyutu */
   text-align: left;
-  /* Metni ortala */
 
   padding: 10px;
-  /* Metin iç kenar boşluğu */
 }
 
 .image-container1 {
   position: relative;
 
   width: 100%px;
-  /* İsteğe bağlı: Konteynerin genişliği */
   height: 600px;
-  /* İsteğe bağlı: Konteynerin yüksekliği */
   overflow: hidden;
 }
 
 .image-text2 {
   position: absolute;
   top: 34%;
-  /* Dikey olarak ortala */
   left: 34%;
-  /* Yatay olarak ortala */
   transform: translate(-50%, -50%);
-  /* Ortalanmış metni düzelt */
   color: white;
-  /* Yazı rengi */
   font-size: 45px;
-  /* Yazı boyutu */
   text-align: left;
-  /* Metni ortala */
 
   padding: 10px;
-  /* Metin iç kenar boşluğu */
 }
 
 .homepage6 {
@@ -471,8 +428,6 @@ td {
 }
 
 .altyazi {
-  /* İsteğe bağlı, div genişliği */
-  /* İsteğe bağlı, sınır eklemek için */
   padding-left: 50%;
 }
 
