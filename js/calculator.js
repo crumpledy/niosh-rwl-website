@@ -1,5 +1,3 @@
-var currentLanguage = 'en';
-
 var unitOfMeasurement = document.getElementById("unit-of-measurement-select");
 
 var horizontalLocation = document.getElementById("horizontal-location-text");
@@ -15,7 +13,31 @@ var couplingOptions = ["", "Good", "Fair", "Poor"];
 var frequencyOptions = ["", "<=0.2", "0.5", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", ">15"];
 var durationOptions = ["", "≤ 1 Hour", ">1 but ≤ 2 Hours", ">2 but ≤ 8 Hours"];
 
-// F:6 da <= 1 hourdaki 0.75 ler dökümanda 75 sorarız!
+// Output Table
+var outputTable = document.getElementById("output-table");
+
+// Outputs
+var rwlOutput = document.getElementById("rwl-output");
+var liOutput = document.getElementById("li-output");
+var hmOutput = document.getElementById("hm-output");
+var vmOutput = document.getElementById("vm-output");
+var dmOutput = document.getElementById("dm-output");
+var amOutput = document.getElementById("am-output");
+var fmOutput = document.getElementById("fm-output");
+var cmOutput = document.getElementById("cm-output");
+
+// Printing bindings
+var inputTable = document.getElementById("input-table");
+var actionButtons = document.getElementById("button-container");
+
+// Suggestions
+var hmSuggestionCell = document.getElementById("hm-suggestion");
+var vmSuggestionCell = document.getElementById("vm-suggestion");
+var dmSuggestionCell = document.getElementById("dm-suggestion");
+var amSuggestionCell = document.getElementById("am-suggestion");
+var fmSuggestionCell = document.getElementById("fm-suggestion");
+var cmSuggestionCell = document.getElementById("cm-suggestion");
+
 const liftTable = [
     { F: "<=0.2", "≤ 1 Hour": { "<75cm": 1.000, ">=75cm": 1.000 }, ">1 but ≤ 2 Hours": { "<75cm": 0.950, ">=75cm": 0.950 }, ">2 but ≤ 8 Hours": { "<75cm": 0.850, ">=75cm": 0.850 } },
     { F: "0.5", "≤ 1 Hour": { "<75cm": 0.970, ">=75cm": 0.970 }, ">1 but ≤ 2 Hours": { "<75cm": 0.920, ">=75cm": 0.920 }, ">2 but ≤ 8 Hours": { "<75cm": 0.810, ">=75cm": 0.810 } },
@@ -42,30 +64,6 @@ const couplingTable = [
     { F: "Fair", "<75cm": 0.950, ">=75cm": 1.000 },
     { F: "Poor", "<75cm": 0.900, ">=75cm": 0.900 }
 ];
-
-// Output Table
-var outputTable = document.getElementById("output-table");
-
-//outputs
-var rwlOutput = document.getElementById("rwl-output");
-var liOutput = document.getElementById("li-output");
-var hmOutput = document.getElementById("hm-output");
-var vmOutput = document.getElementById("vm-output");
-var dmOutput = document.getElementById("dm-output");
-var amOutput = document.getElementById("am-output");
-var fmOutput = document.getElementById("fm-output");
-var cmOutput = document.getElementById("cm-output");
-
-// Printing bindings
-var title = document.getElementById("title");
-var inputTable = document.getElementById("input-table");
-var actionButtons = document.getElementById("button-container");
-var navButtons = document.getElementById("nav-links");
-var langButtons = document.getElementById("language-selector");
-var footerContainer = document.getElementById("footer-container");
-var onPrintHeader = document.getElementById("on-print-header");
-var onPrintFooter = document.getElementById("on-print-footer");
-var onPrintFooterBar = document.getElementById("footer-bar");
 
 for (var i = 0; i < couplingOptions.length; i++) {
     var opt = couplingOptions[i];
@@ -131,8 +129,7 @@ function calculate() {
     showOutputTable()
 }
 
-function isUsMeasurement(value) {
-    var isUsMeasurement = false
+function isUsMeasurementCmToInch(value) {
 
     if (unitOfMeasurement.value != "metric") {
         return value * 2.54
@@ -140,70 +137,79 @@ function isUsMeasurement(value) {
 
     return value
 }
-var hmSuggestionCell = document.getElementById("hm-suggestion"); // hm-suggestion ID'sine sahip hücreyi seç
+
+function isUsMeasurementKgToPound(value) {
+
+    if (unitOfMeasurement.value != "metric") {
+        return value / 2.20
+    }
+
+    return value
+}
+
 function calculateHm() {
-    if (isUsMeasurement(horizontalLocation.value) <= 25) {
+    if (isUsMeasurementCmToInch(horizontalLocation.value) <= 25) {
         hmOutput.innerText = 1;
         hmSuggestionCell.innerText = "";
-    } else if (isUsMeasurement(horizontalLocation.value) >= 63) {
+    } else if (isUsMeasurementCmToInch(horizontalLocation.value) >= 63) {
         hmOutput.innerText = 0;
         hmSuggestionCell.innerText = "Your horizontal distance is greater than acceptable level. You should reduce your horizontal distance and bring it closer to the ideal value of 25 cm.";
         hmSuggestionCell.style.color = "red";
     } else {
-        hmOutput.innerText = (25/isUsMeasurement(horizontalLocation.value)).toFixed(3);
+        hmOutput.innerText = (25/isUsMeasurementCmToInch(horizontalLocation.value)).toFixed(3);
         hmSuggestionCell.innerText = "You should reduce your horizontal distance and bring it closer to the ideal value of 25 cm.";
         hmSuggestionCell.style.color = "black";
     }
 }
-var vmSuggestionCell = document.getElementById("vm-suggestion");
+
 function calculateVm() {
-    if (isUsMeasurement(verticalLocation.value) == 75) {
+    if (isUsMeasurementCmToInch(verticalLocation.value) == 75) {
         vmOutput.innerText = 1;
         vmSuggestionCell.innerText = "";
-    } else if (isUsMeasurement(verticalLocation.value) >= 175) {
+    } else if (isUsMeasurementCmToInch(verticalLocation.value) >= 175) {
         vmOutput.innerText = 0;
         vmSuggestionCell.style.color = "red";
         vmSuggestionCell.innerText = "Your vertical distance is greater than acceptable level, you should reduce the lifting height and bring it closer to the ideal value of 75."
     } else {
-        vmOutput.innerText = (1-(0.003*Math.abs(isUsMeasurement(verticalLocation.value) - 75))).toFixed(3);
+        vmOutput.innerText = (1-(0.003*Math.abs(isUsMeasurementCmToInch(verticalLocation.value) - 75))).toFixed(3);
         vmSuggestionCell.style.color = "black";
         vmSuggestionCell.innerText = " You should reduce the lifting height and bring it closer to the ideal value of 75."
     }
 }
-var dmSuggestionCell = document.getElementById("dm-suggestion");
+
 function calculateDm() {
-    if (isUsMeasurement(distance.value) <= 25) {
+    if (isUsMeasurementCmToInch(distance.value) <= 25) {
         dmOutput.innerText = 1;
         dmSuggestionCell.innerText = ""
-    } else if (isUsMeasurement(distance.value) >= 175) {
+    } else if (isUsMeasurementCmToInch(distance.value) >= 175) {
         dmOutput.innerText = 0;
         dmSuggestionCell.style.color = "red";
         dmSuggestionCell.innerText ="You should reduce the distance value and bring it closer to the ideal value of 25."
     } else {
-        dmOutput.innerText = (0.82 + (4.5/isUsMeasurement(distance.value))).toFixed(3);
+        dmOutput.innerText = (0.82 + (4.5/isUsMeasurementCmToInch(distance.value))).toFixed(3);
         dmSuggestionCell.style.color = "black";
         dmSuggestionCell.innerText = "You should reduce your distance value, bringing it closer to the ideal 25."
     }
 }
-var amSuggestionCell = document.getElementById("am-suggestion");
+
 function calculateAm() {
-    if (isUsMeasurement(angleOfAsymmetry.value) <= 0) {
+    if (angleOfAsymmetry.value <= 0) {
         amOutput.innerText = 1;
         amSuggestionCell.innerText = ""
-    } else if (isUsMeasurement(angleOfAsymmetry.value) >= 135) {
+    } else if (angleOfAsymmetry.value >= 135) {
         amOutput.innerText = 0;
         amSuggestionCell.style.color = "red";
         amSuggestionCell.innerText = "Your asymmetry factor is greater than acceptable level. You should reduce your lift angle and bring it closer to the ideal 0.S"
     } else {
-        amOutput.innerText = (1-(0.0032*isUsMeasurement(angleOfAsymmetry.value))).toFixed(3);
+        amOutput.innerText = (1-(0.0032*angleOfAsymmetry.value)).toFixed(3);
         amSuggestionCell.style.color = "black";
         amSuggestionCell.innerText = "You should reduce your lift angle and bring it closer to the ideal 0."
     }
 }
-var fmSuggestionCell = document.getElementById("fm-suggestion");
+
 function calculateFm() {
-    fmOutput.innerText = getTableValue(selectFrequency.value, selectDuration.value, isUsMeasurement(verticalLocation.value)).toFixed(3);
-    if((isUsMeasurement(verticalLocation.value)>=75) && selectDuration.value === durationOptions[1]) {
+    fmOutput.innerText = getTableValue(selectFrequency.value, selectDuration.value, isUsMeasurementCmToInch(verticalLocation.value)).toFixed(3);
+    if((isUsMeasurementCmToInch(verticalLocation.value)>=75) && selectDuration.value === durationOptions[1]) {
 
         if(selectFrequency.value===frequencyOptions[1]){
             fmSuggestionCell.innerText = "You don't need to change anything."
@@ -219,7 +225,7 @@ function calculateFm() {
 
 
     }
-    if((isUsMeasurement(verticalLocation.value)<75) && selectDuration.value === durationOptions[1]) {
+    if((isUsMeasurementCmToInch(verticalLocation.value)<75) && selectDuration.value === durationOptions[1]) {
 
         if(selectFrequency.value===frequencyOptions[1]){
             fmSuggestionCell.innerText = "You don't need to change anything."
@@ -238,11 +244,9 @@ function calculateFm() {
             fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText=  "You should reduce your lifting frequency."
         }
-
-
     }
 
-    if((isUsMeasurement(verticalLocation.value)<75) && selectDuration.value === durationOptions[2]) {
+    if((isUsMeasurementCmToInch(verticalLocation.value)<75) && selectDuration.value === durationOptions[2]) {
 
         if(selectFrequency.value===frequencyOptions[1]){
             fmSuggestionCell.style.color = "black";
@@ -265,10 +269,9 @@ function calculateFm() {
             fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
         }
-
-
     }
-    if((isUsMeasurement(verticalLocation.value)>=75) && selectDuration.value === durationOptions[2]) {
+
+    if((isUsMeasurementCmToInch(verticalLocation.value)>=75) && selectDuration.value === durationOptions[2]) {
 
         if(selectFrequency.value===frequencyOptions[1]){
             fmSuggestionCell.style.color = "black";
@@ -287,10 +290,9 @@ function calculateFm() {
             fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
         }
-
-
     }
-    if((isUsMeasurement(verticalLocation.value)<75) && selectDuration.value === durationOptions[3]) {
+
+    if((isUsMeasurementCmToInch(verticalLocation.value)<75) && selectDuration.value === durationOptions[3]) {
 
         if(selectFrequency.value===frequencyOptions[1]){
             fmSuggestionCell.innerText = "You should reduce your work durations."
@@ -317,10 +319,9 @@ function calculateFm() {
             fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText=  "You should reduce your work durations and lifting frequency."
         }
-
-
     }
-    if((isUsMeasurement(verticalLocation.value)>=75) && selectDuration.value === durationOptions[3]) {
+
+    if((isUsMeasurementCmToInch(verticalLocation.value)>=75) && selectDuration.value === durationOptions[3]) {
 
         if(selectFrequency.value===frequencyOptions[1]){
             fmSuggestionCell.style.color = "black";
@@ -343,10 +344,7 @@ function calculateFm() {
             fmSuggestionCell.style.color = "black";
             fmSuggestionCell.innerText=  "You should reduce the frequency of lifting to less than 11 lifts per minute."
         }
-
-
     }
-
 }
 
 function getTableValue(frequency, workDuration, verticalHeight) {
@@ -376,7 +374,7 @@ function getTableValue(frequency, workDuration, verticalHeight) {
 
     return heightValue;
   }
-  var cmSuggestionCell = document.getElementById("cm-suggestion");
+
   function calculateCm() {
     cmOutput.innerText = getCmValueTable(selectCoupling.value, verticalLocation.value).toFixed(3);
 
@@ -414,7 +412,7 @@ function calculateRwl() {
 }
 
 function calculateLi() {
-    liOutput.innerText = (parseFloat(loadWeight.value) / parseFloat(rwlOutput.innerText)).toFixed(3);
+    liOutput.innerText = (parseFloat(isUsMeasurementKgToPound(loadWeight.value)) / parseFloat(rwlOutput.innerText)).toFixed(3);
 }
 
 function checkValues() {
